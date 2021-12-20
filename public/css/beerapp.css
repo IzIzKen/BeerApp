@@ -1,0 +1,9 @@
+.box {
+    position: relative;
+}
+
+.box h2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

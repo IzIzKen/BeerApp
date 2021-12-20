@@ -9,7 +9,7 @@ class Beers extends Model
 {
     use HasFactory;
 
-    public function burewery()
+    public function brewery()
     {
         return $this->belongsTo(Breweries::class);
     }

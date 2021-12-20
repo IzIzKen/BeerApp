@@ -43,12 +43,15 @@ class BeerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Beers  $beers
+     * @param \App\Models\Beers $beers
+     * @param int $
      * @return \Illuminate\Http\Response
      */
-    public function show(Beers $beers)
+    public function show(Beers $beers, int $id)
     {
-        //
+        $beer = Beers::with('brewery')->find($id);
+
+        return view('beer.show', compact('beer'));
     }
 
     /**
