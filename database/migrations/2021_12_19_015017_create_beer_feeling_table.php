@@ -15,9 +15,12 @@ class CreateBeerFeelingTable extends Migration
     {
         Schema::create('beer_feeling', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('beer_id');
-            $table->bigInteger('feeling_id');
+            $table->bigInteger('beer_id')->unsigned();
+            $table->bigInteger('feeling_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('beer_id')->references('id')->on('beers');
+            $table->foreign('feeling_id')->references('id')->on('feelings');
         });
     }
 

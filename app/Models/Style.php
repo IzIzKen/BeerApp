@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Feelings extends Model
+class Style extends Model
 {
     use HasFactory;
 
     public function beers()
     {
-        return $this->belongsToMany(Beers::class);
+        return $this->hasMany(Beer::class);
     }
 }

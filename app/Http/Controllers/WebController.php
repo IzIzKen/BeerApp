@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Feelings;
+use App\Models\Feeling;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
     public function index()
     {
-        $feelings = Feelings::all();
+        $feelings = Feeling::all();
 
         return view('index', compact('feelings'));
     }

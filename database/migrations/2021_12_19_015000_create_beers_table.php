@@ -15,9 +15,9 @@ class CreateBeersTable extends Migration
     {
         Schema::create('beers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('brewery_id');
-            $table->bigInteger('local_id');
-            $table->bigInteger('style_id');
+            $table->bigInteger('brewery_id')->unsigned();
+//            $table->bigInteger('local_id');
+            $table->bigInteger('style_id')->unsigned();
             $table->string('name');
             $table->integer('price')->nullable();
             $table->integer('bitterness');
@@ -26,6 +26,8 @@ class CreateBeersTable extends Migration
             $table->integer('deepness');
             $table->integer('strength');
             $table->timestamps();
+            $table->foreign('brewery_id')->references('id')->on('breweries');
+            $table->foreign('style_id')->references('id')->on('styles');
         });
     }
 

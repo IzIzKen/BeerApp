@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Beers;
+use App\Models\beerFeeling;
+use App\Models\Beer;
+use App\Models\Feeling;
 use Illuminate\Http\Request;
 
 class BeerController extends Controller
@@ -14,7 +16,7 @@ class BeerController extends Controller
      */
     public function index()
     {
-        $beers = Beers::all();
+        $beers = Beer::all();
 
         return view('beer.index', compact('beers'));
     }
@@ -43,13 +45,13 @@ class BeerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Beers $beers
+     * @param \App\Models\Beer $beers
      * @param int $
      * @return \Illuminate\Http\Response
      */
-    public function show(Beers $beers, int $id)
+    public function show(Beer $beers, int $id)
     {
-        $beer = Beers::with('brewery')->find($id);
+        $beer = Beer::with('brewery')->find($id);
 
         return view('beer.show', compact('beer'));
     }
@@ -57,10 +59,10 @@ class BeerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Beers  $beers
+     * @param \App\Models\Beer $beers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Beers $beers)
+    public function edit(Beer $beers)
     {
         //
     }
@@ -68,11 +70,11 @@ class BeerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Beers  $beers
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Beer $beers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Beers $beers)
+    public function update(Request $request, Beer $beers)
     {
         //
     }
@@ -80,11 +82,40 @@ class BeerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Beers  $beers
+     * @param \App\Models\Beer $beers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Beers $beers)
+    public function destroy(Beer $beers)
     {
         //
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     *
+     */
+    public function search(Request $request)
+    {
+//        $feeling = Feeling::find($request->feeling_id);
+
+//        $temp = $request->temp; //30
+//        switch ($temp) {
+//            case 30:
+//                $queryParams = [
+//                    'biterness' => '2',
+//                    'stremgs' => '5',
+//                ];
+//        }
+
+        $queryParams = [
+            'feeling_id' => $request->feeling_id,
+            'bitterness' => 3
+        ];
+
+        $beerFeelings = beerFeeling::query()->search($queryParams)->get();
+        dd($beerFeelings);
+
+        return view('beer.search', compact('beerFeelings'));
     }
 }

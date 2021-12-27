@@ -16,4 +16,5 @@ Route::get('/', 'WebController@index');
 
 Route::get('beer', 'BeerController@index')->name('index');
 Route::get('beer/{id}', 'Beercontroller@show')->name('show');
+Route::post('search', 'BeerController@search')->name('search');
 
