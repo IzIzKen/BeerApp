@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,8 +106,8 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
-
+//    'faker_locale' => 'en_US',
+    'faker_locale' => 'ja_JP',
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

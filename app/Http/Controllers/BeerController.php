@@ -97,24 +97,51 @@ class BeerController extends Controller
      */
     public function search(Request $request)
     {
-//        $feeling = Feeling::find($request->feeling_id);
+        $temp = $request->temperature;
+        switch ($temp) {
+            case $temp >= -5 && $temp < 3:
+                $queryParams = [
+                    'feeling_id' => $request->feeling_id,
+                    'deepness' => '5',
+                    'strength' => '1',
+                ];
+                break;
 
-//        $temp = $request->temp; //30
-//        switch ($temp) {
-//            case 30:
-//                $queryParams = [
-//                    'biterness' => '2',
-//                    'stremgs' => '5',
-//                ];
-//        }
+            case $temp >= 3 && $temp < 11:
+                $queryParams = [
+                    'feeling_id' => $request->feeling_id,
+                    'deepness' => '4',
+                    'strength' => '2',
+                ];
+                break;
 
-        $queryParams = [
-            'feeling_id' => $request->feeling_id,
-            'bitterness' => 3
-        ];
+            case $temp >= 11 && $temp < 19:
+                $queryParams = [
+                    'feeling_id' => $request->feeling_id,
+                    'deepness' => '3',
+                    'strength' => '3',
+                ];
+                break;
 
+            case $temp >= 19 && $temp < 27:
+                $queryParams = [
+                    'feeling_id' => $request->feeling_id,
+                    'deepness' => '2',
+                    'strength' => '4',
+                ];
+                break;
+
+            case $temp >= 27 && $temp < 35:
+                $queryParams = [
+                    'feeling_id' => $request->feeling_id,
+                    'deepness' => '1',
+                    'strength' => '5',
+                ];
+                break;
+        }
+
+//        dd($queryParams);
         $beerFeelings = beerFeeling::query()->search($queryParams)->get();
-        dd($beerFeelings);
 
         return view('beer.search', compact('beerFeelings'));
     }
