@@ -6,6 +6,7 @@ use App\Models\beerFeeling;
 use App\Models\Beer;
 use App\Models\Feeling;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class BeerController extends Controller
 {

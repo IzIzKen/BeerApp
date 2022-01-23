@@ -1,5 +1,8 @@
 const mix = require('laravel-mix');
+const glob = require(`glob`);
 
+const resource_base_path = "resources/brew_assets";
+const output_base_path = "public/brew_assets";
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
