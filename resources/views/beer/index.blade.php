@@ -5,11 +5,11 @@
     <div class="header-wrap" style="background-image: url(img/67662-OD5JA0-177_resize.jpg);">
 
         <!-- Navigation -->
-        @component('layouts.navigation')
-        @endcomponent
+    @component('layouts.navigation')
+    @endcomponent
 
 
-        <!-- Page Header -->
+    <!-- Page Header -->
         <header class="header page-header image-header">
             <div class="container">
                 <div class="row">
@@ -52,8 +52,17 @@
 
 
             <!-- Load More -->
-                <div class="load-more-wrapper">
+                {{--<div class="load-more-wrapper">
                     <a href="javascript:void(0);"><i class="fa fa-refresh"></i> Load More</a>
+                </div>--}}
+                <div class="row">
+                    <div class="col-sm-12 align-items-center justify-content-center" style="display: flex;">
+                        <div class="dataTables_paginate paging_simple_numbers">
+                            {{ $beers->links('layouts.default') }}
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </section>

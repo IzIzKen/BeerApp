@@ -1027,8 +1027,8 @@ jQuery(document).ready(function () {
     });
 
     // Load More Example
-    $(document).ready(function () {
-        $(".grid-item").slice(0, 8).show();
+    $(document.body).ready(function () {
+        $('').slice(0, 8).show();
         $('.load-more-wrapper > a').on('click', function (e) {
             e.preventDefault();
 
@@ -1038,8 +1038,8 @@ jQuery(document).ready(function () {
             $this.addClass('loading fa-spin');
             $icon.addClass('fa-spin');
 
-            $(".grid-item:hidden").slice(0, 8).slideDown();
-            if ($(".grid-item:hidden").length === 0) {
+            $("beers:hidden").slice(0, 8).slideDown();
+            if ($("beers:hidden").length === 0) {
                 $(".load-more-wrapper").text("No Content").addClass("noContent");
             }
 

@@ -98,6 +98,16 @@ h5 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
 }
+h6 {
+    font-size: 5px;
+    color: #3a3a3a;
+    font-family: "Anton", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: normal;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+}
 /*------------------------------------------------------------------
 # 2. Elements
 -------------------------------------------------------------------*/
@@ -137,6 +147,10 @@ p {
 }
 img {
   max-width: 100%;
+}
+.background-img{
+    background-image: url("public/img/67662-OD5JA0-177_resize.jpg");
+    background-size: contain;
 }
 article,
 aside {
@@ -292,7 +306,7 @@ aside {
   background: rgba(0, 0, 0, 0.5);
 }
 .hero-start {
-  position: absolute;
+  /*position: absolute;*/
   bottom: 50px;
   left: 50%;
   font-size: 50px;
@@ -855,7 +869,7 @@ li.has-child:hover a::after {
   margin: 0 0 50px 0;
 }
 .section-heading > span {
-  font-size: 1.2em;
+  font-size: smaller;
   position: relative;
 }
 .section-heading > span::before {
@@ -1098,7 +1112,7 @@ li.has-child:hover a::after {
   color: #ffffff;
 }
 .features-grid figure figcaption,
-.features-grid figure figcaption > a {
+.features-grid figure  > a {
   position: absolute;
   top: 0;
   left: 0;
@@ -1931,6 +1945,9 @@ article .post-audio audio {
   text-align: center;
   margin: 0 0 25px 0;
 }
+.grid-wrapper {
+    height: 380px;
+}
 .grid-wrapper > a {
   display: block;
   cursor: cell;
@@ -2501,7 +2518,7 @@ figure:not(.format-video):hover::after,
     padding: 30px;
   }
   .header .content h1 {
-    font-size: 34px;
+    font-size: 28px;
   }
   .footer-secondary ul li:first-of-type {
     padding-left: 0;

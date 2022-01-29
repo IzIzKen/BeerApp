@@ -2,12 +2,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="header-wrap" style="background-image: url(img/67662-OD5JA0-177_resize.jpg);">
+    <div class="header-wrap" style="background-image: url({{ asset('img/67662-OD5JA0-177_resize.jpg') }});">
 
         <!-- Navigation -->
     @component('layouts.navigation')
     @endcomponent
-
 
     <!-- Page Header -->
         <header class="header page-header image-header">
@@ -47,7 +46,7 @@
             </div>
         </div>
 
-        {{--<section class="page-section">
+        <section class="page-section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -67,7 +66,7 @@
             </div>
         </section>
 
-        <!-- Our Locations -->
+        {{--<!-- Our Locations -->
         <section class="page-section no-padding">
             <div class="container-fluid">
                 <div class="row no-gutter">

@@ -20,25 +20,25 @@
     <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro%7CAnton" rel="stylesheet">
 
     <!-- Vendor -->
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="css/introLoader.min.css">
-    <link rel="stylesheet" type="text/css" href="css/featherlight.min.css">
-    <link rel="stylesheet" type="text/css" href="css/slick.css">
-    <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="css/tooltipster.css">
-    <link rel="stylesheet" type="text/css" href="css/selectric.custom.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/introLoader.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/featherlight.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick-theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tooltipster.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/selectric.custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 
     <!-- Page Specific Styles -->
-    <link rel="stylesheet" type="text/css" href="css/aos.css">
-    <link rel="stylesheet" type="text/css" href="css/remodal.css">
-    <link rel="stylesheet" type="text/css" href="css/remodal-default-theme.custom.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/aos.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/remodal.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/remodal-default-theme.custom.css') }}">
 
     <!-- Modernizr -->
-    <script src="js/vendor/modernizr.js"></script>
+    <script src="{{ asset('js/vendor/modernizr.js') }}"></script>
 </head>
 <body id="app" class="home">
 <!--[if lt IE 8]>
@@ -69,33 +69,33 @@
 
 
 <!-- Core -->
-<script src="js/vendor/jquery.min.js"></script>
-<script src="js/vendor/jquery-ui.min.js"></script>
+<script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+<script src="{{ asset('js/vendor/jquery-ui.min.js') }}"></script>
 
 <!-- Vendor -->
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/vendor/jquery.selectric.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyBwOM-0o426zcLxUoCtWo2MSzISsAn6S1M"></script>
-<script src="js/vendor/gmaps.min.js"></script>
-<script src="js/vendor/jquery.waypoints.min.js"></script>
-<script src="js/vendor/SmoothScroll.js"></script>
-<script src="js/vendor/jquery.hoverIntent.js"></script>
-<script src="js/vendor/jquery.simpler-sidebar.min.js"></script>
-<script src="js/vendor/jquery.introLoader.pack.min.js"></script>
-<script src="js/vendor/featherlight.min.js"></script>
-<script src="js/vendor/featherlight.gallery.min.js"></script>
-<script src="js/vendor/slick.min.js"></script>
-<script src="js/vendor/jquery.tooltipster.min.js"></script>
-<script src="js/vendor/imagesloaded.pkgd.min.js"></script>
-<script src="js/vendor/isotope.pkgd.min.js"></script>
-<script src="js/vendor/packery-mode.pkgd.min.js"></script>
-<script src="js/vendor/parsley.min.js"></script>
+<script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/vendor/jquery.selectric.min.js') }}"></script>
+<script src="{{ asset('http://maps.google.com/maps/api/js?key=AIzaSyBwOM-0o426zcLxUoCtWo2MSzISsAn6S1M') }}"></script>
+<script src="{{ asset('js/vendor/gmaps.min.js') }}"></script>
+<script src="{{ asset('js/vendor/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('js/vendor/SmoothScroll.js') }}"></script>
+<script src="{{ asset('js/vendor/jquery.hoverIntent.js') }}"></script>
+<script src="{{ asset('js/vendor/jquery.simpler-sidebar.min.js') }}"></script>
+<script src="{{ asset('js/vendor/jquery.introLoader.pack.min.js') }}"></script>
+<script src="{{ asset('js/vendor/featherlight.min.js') }}"></script>
+<script src="{{ asset('js/vendor/featherlight.gallery.min.js') }}"></script>
+<script src="{{ asset('js/vendor/slick.min.js') }}"></script>
+<script src="{{ asset('js/vendor/jquery.tooltipster.min.js') }}"></script>
+<script src="{{ asset('js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('js/vendor/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('js/vendor/packery-mode.pkgd.min.js') }}"></script>
+<script src="{{ asset('js/vendor/parsley.min.js') }}"></script>
 
 <!-- Vendor (Page Specific) -->
-<script src="js/vendor/remodal.min.js"></script>
-<script src="js/vendor/aos.js"></script>
+<script src="{{ asset('js/vendor/remodal.min.js') }}"></script>
+<script src="{{ asset('js/vendor/aos.js') }}"></script>
 
 <!-- Theme -->
-<script src="js/main.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

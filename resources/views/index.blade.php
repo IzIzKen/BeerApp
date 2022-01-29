@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="hero-wrap" style="background-image: url('img/manybeers_resize.png');">
+    <div class="hero-wrap" style="background-image: url({{ asset('img/manybeers_resize.png') }});">
 
         <!-- Navigation -->
     @component('layouts.navigation')
@@ -18,10 +18,10 @@
                         <div class="col-md-push-5 col-md-7 col-sm-12 col-xs-12">
                             <div class="header-content">
                                 <h1 class="title">今の自分、が飲みたいビールを</h1>
-                                <p class="subtitle">「ちょっといいことがあって嬉しいな」<br>「いやなことがあったからスカッとしたい！」<br>そんな今のあなたの気分を教えていただけませんか？「気分」と「気温」から、今のあなたにぴったりのビールをご紹介いたします。</p>
+                                <p class="subtitle">「ちょっといいことがあって嬉しいな」<br>「嫌なことがあったからスカッとしたい！」<br>そんな今の気分を教えていただけませんか？<br><br>「 気分 」と「 気温 」から今のあなたにぴったりのビールをご紹介いたします。</p>
                                 <div class="btn-wrap">
-                                    <a href="about.html" class="btn btn-hero">Learn More</a>
-                                    <a href="{{route('index')}}" class="btn btn-hero">ビールを見る</a>
+                                    <a class="btn btn-hero animated flash infinite hero-start" href="javascript:void(0);">ビールを探す</a>
+                                    <a href="{{route('index')}}" class="btn btn-hero">ビール一覧を見る</a>
                                 </div>
                             </div>
                         </div>
@@ -31,8 +31,7 @@
         </header>
 
         {{--<!-- Hero Start -->
-        <a class="fa fa-chevron-down animated flash infinite hero-start " href="javascript:void(0);"></a>--}}
-    </div>
+        <a class="fa fa-chevron-down animated flash infinite hero-start " href="javascript:void(0);"></a>--}}    </div>
 
     <!-- Page Content -->
     <main class="entry-content">
@@ -40,7 +39,7 @@
             <div class="feature-wrapper">
                 <div class="container-fluid">
                     <div class="row no-gutter">
-                        <form action="{{ route('search')}}" method="post" >
+                        <form action="{{ route('search')}}" method="post">
                             @csrf
                             <div>
                                 <label for="feeling_id">今の気分を選択してください</label>
@@ -62,9 +61,9 @@
                                 </select>
                             </div>
 
-                            <button class = "btn-default btn-centered" type="submit">検索</button>
+                            <button class="btn-default btn-centered" type="submit">検索</button>
                         </form>
-                        <div class="col-md-4">
+                        {{--<div class="col-md-4">
                             <div class="features-grid">
                                 <a href="jobs.html">
                                     <figure>
@@ -102,12 +101,11 @@
                                     </figure>
                                 </a>
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
             </div>
         </section>
-
 
 
         <!-- Our Beers -->
@@ -133,57 +131,6 @@
 
     <!-- /.enry-content -->
 
-    {{--<div>
-        <a href="/">
-            <img src="{{ asset('img/manybeers.png') }}">
-        </a>
-        <h2>アプリの説明（画像の上に重なる）</h2>
-    </div>
 
-    <form action="{{ route('search')}}" method="post" >
-        @csrf
-        <div>
-            <label for="feeling_id">今の気分を選択してください</label>
-            <select name="feeling_id">
-                <option></option>
-                @foreach($feelings as $feeling)
-                    <option value="{{$feeling->id}}">{{$feeling->name}}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div>
-            <label for="temperature">今の気温を選択してください</label>
-            <select name="temperature">
-                <option></option>
-                @for($i = -5; $i <= 40; $i++)
-                    <option value="{{ $i }}">{{$i}} ℃</option>
-                @endfor
-            </select>
-        </div>
-
-        <button type="submit">検索</button>
-    </form>
-
-    <div>
-        <a href="{{route('index')}}">
-            <h3>一覧表示</h3>
-        </a>
-    </div>
-
-    <div>
-        <a href="/">
-            <img src="{{ asset('img/dummy.png') }}">
-        </a>
-        <h3>ビールの概要</h3>
-        <a href="/">
-            <img src="{{ asset('img/dummy.png') }}">
-        </a>
-        <h3>ビールの概要</h3>
-        <a href="/">
-            <img src="{{ asset('img/dummy.png') }}">
-        </a>
-        <h3>ビールの概要</h3>
-    </div>--}}
 
 @endsection

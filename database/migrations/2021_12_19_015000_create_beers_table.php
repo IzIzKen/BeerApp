@@ -20,11 +20,14 @@ class CreateBeersTable extends Migration
             $table->bigInteger('style_id')->unsigned();
             $table->string('name');
             $table->integer('price')->nullable();
-            $table->integer('bitterness');
-            $table->integer('sweetness');
-            $table->integer('acidity');
-            $table->integer('deepness');
-            $table->integer('strength');
+            $table->string('alcohol')->nullable();
+            $table->string('img_url');
+            $table->double('bitterness')->nullable();
+            $table->integer('sweetness')->nullable();
+            $table->integer('acidity')->nullable();
+            $table->double('deepness')->nullable();
+            $table->double('strength')->nullable();
+
             $table->timestamps();
             $table->foreign('brewery_id')->references('id')->on('breweries');
             $table->foreign('style_id')->references('id')->on('styles');

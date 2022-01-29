@@ -2,9 +2,9 @@
     <div id="sidebar-wrapper" class="sidebar-wrapper">
         <nav class="mobile-navigation">
             <ul class="list-unstyled">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="beers.html">Beers</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="{{ 'home' }}">Home</a></li>
+                <li><a href="{{ 'index' }}">Beers</a></li>
+                {{--<li><a href="about.html">About</a></li>
                 <li><a href="jobs.html">Jobs</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li class="has-child"><a href="javascript:void(0)">News</a>
@@ -21,7 +21,7 @@
                         <li><a href="gallery-4col.html">4 Columns</a></li>
                     </ul>
                 </li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>--}}
             </ul>
         </nav>
         <a class="close-sidebar" href="javascript:void(0)"><i class="fa fa-times"></i></a>
