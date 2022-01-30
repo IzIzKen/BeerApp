@@ -5,8 +5,9 @@
 
                 <!-- Left Menu -->
                 <ul class="list-unstyled list-inline topbar-left col-md-5">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="{{route('index')}}">Beers</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('index') }}">Beers</a></li>
+
                     {{--<li><a href="{{route('home')}}">About</a></li>
                     <li><a href="{{route('home')}}">Jobs</a></li>--}}
                 </ul>

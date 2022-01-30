@@ -2187,7 +2187,7 @@ figure:not(.format-video):hover::after,
 }
 .about-single-gallery img {
   display: block;
-  width: 100%;
+  height: 100%;
   margin: 0 auto;
 }
 .about-single-gallery::before {
