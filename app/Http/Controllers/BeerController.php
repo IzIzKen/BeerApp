@@ -65,7 +65,7 @@ class BeerController extends Controller
      * @param int $
      * @return \Illuminate\Http\Response
      */
-    public function show(Beer $beers, ?int $id)
+    public function show(Beer $beers, int $id)
     {
         $beer = Beer::with('brewery')->find($id);
 

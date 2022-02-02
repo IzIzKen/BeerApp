@@ -27,8 +27,9 @@
                         <div class="col-md-6">
                             <div class="events-wrapper">
                                 <h3 class="event-title">{{ $beer->name }}</h3>
+                                <h3 class="event-title">{{ $beer->name_en }}</h3>
                                 <ul class="event-meta list-inline">
-                                    <li class="fa fa-tint tooltipster">{{ $beer->alcohol }} %</li>
+                                    <li class="fa fa-tint tooltipster">{{ $beer->alcohol }}</li>
                                     <li class="fa fa-beer tooltipster">{{ $beer->style->name }}</li>
                                     <li class="fa fa-industry tooltipster">{{ $beer->brewery->name }}</li>
                                 </ul>
@@ -56,7 +57,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <p>description</p>
+                                <p>{{ $beer->description }}</p>
                             </div>
                         </div>
                     </div>

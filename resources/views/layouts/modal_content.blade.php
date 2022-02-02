@@ -15,7 +15,7 @@
                         <tbody>
                         <tr>
                             <td>アルコール度数:</td>
-                            <td>{{$beer->alcohol}}%</td>
+                            <td>{{$beer->alcohol}}</td>
                         </tr>
                         <tr>
                             <td>スタイル:</td>
@@ -27,23 +27,23 @@
                         </tr>
                         <tr>
                             <td>苦さ:</td>
-                            <td>{{$beer->bitterness}}/5</td>
+                            <td>{{ str_repeat('🍺', $beer->bitterness) }}</td>
                         </tr>
                         <tr>
                             <td>甘さ:</td>
-                            <td>{{$beer->sweetness}}/5</td>
+                            <td>{{ str_repeat('🍺', $beer->sweetness) }}</td>
                         </tr>
                         <tr>
                             <td>酸味:</td>
-                            <td>{{$beer->acidity}}/5</td>
+                            <td>{{ str_repeat('🍺', $beer->acidity) }}</td>
                         </tr>
                         <tr>
                             <td>コク:</td>
-                            <td>{{$beer->deepness}}/5</td>
+                            <td>{{ str_repeat('🍺', $beer->deepness) }}</td>
                         </tr>
                         <tr>
                             <td>キレ:</td>
-                            <td>{{$beer->strength}}/5</td>
+                            <td>{{ str_repeat('🍺', $beer->strength) }}</td>
                         </tr>
                         </tbody>
                     </table>

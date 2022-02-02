@@ -16,13 +16,10 @@ class CreateBreweriesTable extends Migration
         Schema::create('breweries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('url')->nullable();
+            $table->string('address')->nullable();
             $table->string('tel')->nullable();
-            $table->string('postal_code');
-            $table->string('prefecture');
-            $table->string('city');
-            $table->string('street_address');
-            $table->string('after_the_street_address')->nullable();
+            $table->string('web');
+            $table->text('description');
             $table->timestamps();
         });
     }

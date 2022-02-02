@@ -19,7 +19,7 @@ class BeerFeelingFactory extends Factory
     public function definition()
     {
         return [
-            'beer_id' => $this->faker->numberBetween(1,54),
+            'beer_id' => $this->faker->numberBetween(1,415),
             'feeling_id' =>  $this->faker->numberBetween(1,17),
         ];
     }

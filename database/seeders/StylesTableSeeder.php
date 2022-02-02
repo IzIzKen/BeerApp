@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Style;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class StylesTableSeeder extends Seeder
 {
@@ -15,19 +17,27 @@ class StylesTableSeeder extends Seeder
      */
     public function run()
     {
-        $styles = [
-            '白ビール', 'ランビック', 'ベルジャンエール', 'ペールエール', 'イングリッシュビター', 'スコティッシュエール', 'ブラウンエール',
-            'ポーター', 'スタウト', 'ピルスナー', 'アメリカンラガー', 'ヨーロピアンラガー', 'ボック', 'アルト', 'フレンチエール', 'ジャーマンアンバーエール',
-            'アメリカンスペシャル', 'スモークドビール', 'バーレイワイン', 'ストロングエール'
-        ];
+        $faker = Faker::create('ja_JP');
 
-        foreach ($styles as $style) {
-            $now = Carbon::now();
-            DB::table('styles')->insert([
-                'name' => $style,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ]);
+        $file = fopen(storage_path('app/csvs/beerStyles.csv'), 'r');
+        $insert_array = [];
+        $flag = true;
+        while($csv = fgetcsv($file)){
+            if ($flag){
+                $flag = false;
+                continue;
+            }
+            $insert_array[] = [
+//                'id' => $csv[0],
+                'name' => $csv[1],
+                'description' => $csv[2],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
         }
+
+        fclose($file);
+
+        Style::query()->insert($insert_array);
     }
 }
