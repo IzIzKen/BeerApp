@@ -10,46 +10,42 @@
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12">
-                    <h3>{{$beer->name}}</h3>
-                    <table class="table">
-                        <tbody>
-                        <tr>
-                            <td>アルコール度数:</td>
-                            <td>{{$beer->alcohol}}</td>
-                        </tr>
-                        <tr>
-                            <td>スタイル:</td>
-                            <td>{{$beer->style->name}}</td>
-                        </tr>
-                        <tr>
-                            <td>ブルワリー:</td>
-                            <td>{{$beer->brewery->name}}</td>
-                        </tr>
-                        <tr>
-                            <td>苦さ:</td>
-                            <td>{{ str_repeat('🍺', $beer->bitterness) }}</td>
-                        </tr>
-                        <tr>
-                            <td>甘さ:</td>
-                            <td>{{ str_repeat('🍺', $beer->sweetness) }}</td>
-                        </tr>
-                        <tr>
-                            <td>酸味:</td>
-                            <td>{{ str_repeat('🍺', $beer->acidity) }}</td>
-                        </tr>
-                        <tr>
-                            <td>コク:</td>
-                            <td>{{ str_repeat('🍺', $beer->deepness) }}</td>
-                        </tr>
-                        <tr>
-                            <td>キレ:</td>
-                            <td>{{ str_repeat('🍺', $beer->strength) }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="events-wrapper">
+                        <h3 class="event-title">{{ $beer->name }}</h3>
+                        <h3 class="event-title">{{ $beer->name_en }}</h3>
+                        <ul class="event-meta list-inline">
+                            <li class="fa fa-tint tooltipster">{{ $beer->alcohol }}</li>
+                            <li class="fa fa-beer tooltipster">{{ $beer->style->name }}</li>
+                            <li class="fa fa-industry tooltipster">{{ $beer->brewery->name }}</li>
+                        </ul>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>■ 苦さ</td>
+                                <td>{{ str_repeat('🍺', $beer->bitterness) }}</td>
+                            </tr>
+                            <tr>
+                                <td>■ 甘さ</td>
+                                <td>{{ str_repeat('🍺', $beer->sweetness) }}</td>
+                            </tr>
+                            <tr>
+                                <td>■ 酸味</td>
+                                <td>{{ str_repeat('🍺', $beer->acidity) }}</td>
+                            </tr>
+                            <tr>
+                                <td>■ コク</td>
+                                <td>{{ str_repeat('🍺', $beer->deepness) }}</td>
+                            </tr>
+                            <tr>
+                                <td>■ キレ</td>
+                                <td>{{ str_repeat('🍺', $beer->strength) }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p>{{ $beer->description }}</p>
+                    </div>
                 </div>
             </div>
-            <a href="{{ route('show', $beer) }}" class="btn">詳細</a>
         </div>
     @endforeach
 </div>

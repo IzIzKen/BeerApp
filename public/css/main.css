@@ -867,20 +867,31 @@ li.has-child:hover a::after {
   text-align: center;
   text-transform: uppercase;
   margin: 0 0 50px 0;
+
 }
 .section-heading > span {
   font-size: smaller;
   position: relative;
 }
 .section-heading > span::before {
-  content: url("../img/craft-deco-left.png");
+  background-image: url("../img/craft-deco-left.png");
   display: inline-block;
   margin-right: 10px;
+  content: '';
+  background-size: contain;
+  vertical-align: middle;
+  width: 75px;
+  height: 16.5px;
 }
 .section-heading > span::after {
-  content: url("../img/craft-deco-right.png");
+  background-image: url("../img/craft-deco-right.png");
   display: inline-block;
   margin-left: 10px;
+  content: '';
+  background-size: contain;
+  vertical-align: middle;
+  width:75px;
+  height: 16.5px;
 }
 .section-title {
   font-weight: 600;
@@ -932,6 +943,7 @@ li.has-child:hover a::after {
   font-size: 13px;
   color: #222222;
   font-weight: 600;
+  text-align: left;
 }
 .events-wrapper .event-meta > li:first-of-type {
   padding-left: 0;
@@ -944,7 +956,7 @@ li.has-child:hover a::after {
   color: #3a3a3a;
 }
 .events-wrapper .event-meta > li::after {
-  content: "|";
+  /*content: "|";*/
   display: inline-block;
   position: relative;
   left: 7px;
@@ -1987,6 +1999,7 @@ article .post-audio audio {
 }
 .image-lightbox {
   display: block;
+  text-align: center;
 }
 .featherlight-previous {
   left: 35px;

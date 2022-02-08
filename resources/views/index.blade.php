@@ -17,8 +17,8 @@
 
                         <div class="col-md-push-5 col-md-7 col-sm-12 col-xs-12">
                             <div class="header-content">
-                                <h1 class="title">今の自分、が飲みたいビールを</h1>
-                                <p class="subtitle">「ちょっといいことがあって嬉しいな」<br>「嫌なことがあったからスカッとしたい！」<br>そんな今の気分を教えていただけませんか？<br><br>「 気分 」と「 気温 」から今のあなたにぴったりのビールをご紹介いたします。</p>
+                                <h1 class="title">今の自分、<br>が飲みたいビールを</h1>
+                                <p class="subtitle">「ちょっといいことがあって嬉しいな」<br>「今日は疲れたからスカッとしたい！」<br>今はどんな気分ですか？<br><br>「 気分 」と「 気温 」から<br>今のあなたにぴったりのビールを<br>ご紹介いたします。</p>
                                 <div class="btn-wrap">
                                     <a class="btn btn-hero animated flash infinite hero-start" href="javascript:void(0);">ビールを探す</a>
                                     <a href="{{route('index')}}" class="btn btn-hero">ビール一覧を見る</a>
