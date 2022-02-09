@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\beerFeeling;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BeerFeelingFactory extends Factory
+class beerFeelingFactory extends Factory
 {
     /**
      * @var string
