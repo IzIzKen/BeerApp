@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             StylesTableSeeder::class,
             FeelingsTableSeeder::class,
             BeersTableSeeder::class,
-            beerFeelingTableSeeder::class,
+            BeerFeelingTableSeeder::class,
         ]);
     }
 }
