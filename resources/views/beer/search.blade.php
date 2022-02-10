@@ -65,8 +65,60 @@
     </main>
 
     <!-- Modal Content -->
-    @component('layouts.modal_content', ['beers'=>$beerFeelings])
-    @endcomponent
+    {{--@component('layouts.modal_content', ['beers'=>$beerFeelings])
+    @endcomponent--}}
+    <div class="remodal-bg">
+
+        @foreach($beerFeelings as $beerFeeling)
+            <div class="remodal modal-beers" data-remodal-id="bottle-{{$beerFeeling->beer->id}}">
+                <button data-remodal-action="close" class="remodal-close"></button>
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12">
+                        <div class="item-modal-image" style="background-size: contain">
+                            <a class="image-lightbox" href="{{$beerFeeling->beer->img_url}}"><img alt="" src="{{url($beerFeeling->beer->img_url)}}"/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="events-wrapper">
+                            <h3 class="event-title">{{ $beerFeeling->beer->name }}</h3>
+                            <h3 class="event-title">{{ $beerFeeling->beer->name_en }}</h3>
+                            <ul class="event-meta list-inline">
+                                <li class="fa fa-tint tooltipster">{{ $beerFeeling->beer->alcohol }}</li>
+                                <li class="fa fa-beer tooltipster">{{ $beerFeeling->beer->style->name }}</li>
+                                <li class="fa fa-industry tooltipster">{{ $beerFeeling->beer->brewery->name }}</li>
+                            </ul>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>■ 苦さ</td>
+                                    <td>{{ str_repeat('🍺', $beerFeeling->beer->bitterness) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>■ 甘さ</td>
+                                    <td>{{ str_repeat('🍺', $beerFeeling->beer->sweetness) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>■ 酸味</td>
+                                    <td>{{ str_repeat('🍺', $beerFeeling->beer->acidity) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>■ コク</td>
+                                    <td>{{ str_repeat('🍺', $beerFeeling->beer->deepness) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>■ キレ</td>
+                                    <td>{{ str_repeat('🍺', $beerFeeling->beer->strength) }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p>{{ $beerFeeling->beer->description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
 
     {{--<div class="text-center">
         <h1>検索結果</h1>
