@@ -259,7 +259,7 @@ aside {
 -------------------------------------------------------------------*/
 .header-hero {
   position: relative;
-  top: 25%;
+  top: 15%;
 }
 .header-hero .content .subtitle {
   font-size: 15.5px;
@@ -303,7 +303,7 @@ aside {
   height: 100%;
   position: absolute;
   background: transparent;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
 }
 .hero-start {
   /*position: absolute;*/

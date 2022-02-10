@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="hero-wrap" style="background-image: url({{ asset('img/manybeers_resize.png') }});">
+    <div class="hero-wrap" style="background-image: url({{ asset('img/manybeers3.png') }});">
 
         <!-- Navigation -->
     @component('layouts.navigation')
@@ -18,7 +18,7 @@
                         <div class="col-md-push-5 col-md-7 col-sm-12 col-xs-12">
                             <div class="header-content">
                                 <h1 class="title">今の自分、<br>が飲みたいビールを</h1>
-                                <p class="subtitle">「ちょっといいことがあって嬉しいな」<br>「今日は疲れたからスカッとしたい！」<br>今はどんな気分ですか？<br><br>「 気分 」と「 気温 」から<br>今のあなたにぴったりのビールを<br>ご紹介いたします。</p>
+                                <p class="subtitle">今はどんな気分ですか？<br><br>「 気分 」と「 気温 」から<br>今のあなたにぴったりのビールを<br>ご紹介いたします</p>
                                 <div class="btn-wrap">
                                     <a class="btn btn-hero animated flash infinite hero-start" href="javascript:void(0);">ビールを探す</a>
                                     <a href="{{route('index')}}" class="btn btn-hero">ビール一覧を見る</a>
@@ -31,7 +31,8 @@
         </header>
 
         {{--<!-- Hero Start -->
-        <a class="fa fa-chevron-down animated flash infinite hero-start " href="javascript:void(0);"></a>--}}    </div>
+        <a class="fa fa-chevron-down animated flash infinite hero-start " href="javascript:void(0);"></a>--}}
+    </div>
 
     <!-- Page Content -->
     <main class="entry-content">
@@ -41,23 +42,37 @@
                     <div class="row no-gutter">
                         <form action="{{ route('search')}}" method="post">
                             @csrf
-                            <div>
-                                <label for="feeling_id">今の気分を選択してください</label>
+                            {{--<div>
+--}}{{--                                <label for="feeling_id"></label>--}}{{--
                                 <select name="feeling_id">
-                                    <option></option>
+                                    <option>今の気分を選択してください</option>
                                     @foreach($feelings as $feeling)
-                                        <option value="{{$feeling->id}}">{{$feeling->name}}</option>
+                                        <option class="dropdown-item" value="{{$feeling->id}}">{{$feeling->name}}</option>
                                     @endforeach
                                 </select>
+                            </div>--}}
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Action
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
                             </div>
 
                             <div>
-                                <label for="temperature">今の気温を選択してください</label>
+{{--                                <label for="temperature"></label>--}}
                                 <select name="temperature">
-                                    <option></option>
-                                    @for($i = -5; $i <= 40; $i++)
-                                        <option value="{{ $i }}">{{$i}} ℃</option>
-                                    @endfor
+                                    <option>今の気温を選択してください</option>
+                                    <option value="すごく寒い">すごく寒い</option>
+                                    <option value="肌寒い">肌寒い</option>
+                                    <option value="快適な">快適</option>
+                                    <option value="少し暑い">少し暑い</option>
+                                    <option value="すごく暑い">すごく暑い</option>
                                 </select>
                             </div>
 

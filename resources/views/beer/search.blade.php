@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-title"><span>Your Beers</span></h1>
+                        <h2 class="page-title"><span>{{ $feeling->name }}な気分で<br>{{ $temp }}ときは . . .</span></h2>
                     </div>
                 </div>
             </div>
@@ -56,9 +56,7 @@
 
 
             <!-- Load More -->
-                <div class="load-more-wrapper">
-                    <a href="javascript:void(0);"><i class="fa fa-refresh"></i> Load More</a>
-                </div>
+
             </div>
         </section>
 

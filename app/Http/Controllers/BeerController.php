@@ -160,9 +160,10 @@ class BeerController extends Controller
                 break;
         }
 
-//        dd($queryParams);
+//        dd($request);
         $beerFeelings = beerFeeling::query()->search($queryParams)->get();
+        $feeling = Feeling::all()->find($queryParams['feeling_id']);
 
-        return view('beer.search', compact('beerFeelings'));
+        return view('beer.search', compact('beerFeelings', 'feeling', 'temp'));
     }
 }

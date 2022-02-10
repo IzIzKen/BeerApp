@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="header-wrap" style="background-image: url(img/67662-OD5JA0-177_resize.jpg);">
+    <div class="header-wrap" style="background-image: url({{ asset('img/67662-OD5JA0-177_resize.jpg') }});">
 
         <!-- Navigation -->
     @component('layouts.navigation')
@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-title"><span>Beers</span></h1>
+                        <h1 class="page-title"><span>ビール一覧</span></h1>
                     </div>
                 </div>
             </div>
@@ -60,9 +60,7 @@
                         <div class="dataTables_paginate paging_simple_numbers">
                             {{ $beers->links('layouts.default') }}
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </section>
