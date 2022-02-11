@@ -56,8 +56,8 @@
                     <a href="javascript:void(0);"><i class="fa fa-refresh"></i> Load More</a>
                 </div>--}}
                 <div class="row">
-                    <div class="col-sm-12 align-items-center justify-content-center" style="display: flex;">
-                        <div class="dataTables_paginate paging_simple_numbers">
+                    <div class="col-sm-12">
+                        <div{{-- class="dataTables_paginate paging_simple_numbers"--}}>
                             {{ $beers->links('layouts.default') }}
                         </div>
                     </div>

@@ -1,14 +1,14 @@
 @if ($paginator->hasPages())
-    <nav>
+    <nav style="text-align: center!important;">
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="paginate_button page-item previous disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                    <a href="#" class="page-link"><i class="previous"></i></a>
+                    <a href="#" class="page-link"><span>«</span></a>
                 </li>
             @else
                 <li class="paginate_button page-item previous">
-                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')"><i class="previous"></i></a>
+                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')"><span>«</span></a>
                 </li>
             @endif
 
@@ -34,11 +34,11 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="paginate_button page-item next" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')" class="page-link"><i class="next"></i></a>
+                    <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')" class="page-link"><span>»</span></a>
                 </li>
             @else
                 <li class="paginate_button page-item next disabled">
-                    <a href="#" class="page-link"><i class="next"></i></a>
+                    <a href="#" class="page-link"><span>»</span></a>
                 </li>
             @endif
         </ul>
