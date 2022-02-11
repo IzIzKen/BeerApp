@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="page-title"><span>{{ $feeling->name }}な気分で<br>{{ $temp }}ときは . . .</span></h2>
+                        <h3 class="page-title"><span>{{ $feeling->name }}気分で<br>{{ $temp }}ときは . . .</span></h3>
                     </div>
                 </div>
             </div>

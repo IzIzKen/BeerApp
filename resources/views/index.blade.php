@@ -19,10 +19,37 @@
                             <div class="header-content">
                                 <h1 class="title">今の自分、<br>が飲みたいビールを</h1>
                                 <p class="subtitle">今はどんな気分ですか？<br><br>「 気分 」と「 気温 」から<br>今のあなたにぴったりのビールを<br>ご紹介いたします</p>
-                                <div class="btn-wrap">
+                                {{--<div class="btn-wrap">
                                     <a class="btn btn-hero animated flash infinite hero-start" href="javascript:void(0);">ビールを探す</a>
                                     <a href="{{route('index')}}" class="btn btn-hero">ビール一覧を見る</a>
-                                </div>
+                                </div>--}}
+                                <form action="{{ route('search')}}" method="post">
+                                    @csrf
+                                    <div class="btn-group">
+                                        <label for="feeling_id">
+                                            <select name="feeling_id" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <option>気分を選ぶ</option>
+                                                @foreach($feelings as $feeling)
+                                                    <option class="dropdown-item" value="{{$feeling->id}}">{{$feeling->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="btn-group">
+                                        <label for="temperature">
+                                            <select name="temperature" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <option>気温を選ぶ</option>
+                                                <option value="すごく寒い">すごく寒い</option>
+                                                <option value="肌寒い">肌寒い</option>
+                                                <option value="快適な">快適</option>
+                                                <option value="少し暑い">少し暑い</option>
+                                                <option value="すごく暑い">すごく暑い</option>
+                                            </select>
+                                        </label>
+                                    </div>
+
+                                    <button class="btn-default btn-centered btn btn-hero animated flash infinite hero-start" type="submit">ビールを探す</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -40,44 +67,6 @@
             <div class="feature-wrapper">
                 <div class="container-fluid">
                     <div class="row no-gutter">
-                        <form action="{{ route('search')}}" method="post">
-                            @csrf
-                            {{--<div>
---}}{{--                                <label for="feeling_id"></label>--}}{{--
-                                <select name="feeling_id">
-                                    <option>今の気分を選択してください</option>
-                                    @foreach($feelings as $feeling)
-                                        <option class="dropdown-item" value="{{$feeling->id}}">{{$feeling->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>--}}
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-
-                            <div>
-{{--                                <label for="temperature"></label>--}}
-                                <select name="temperature">
-                                    <option>今の気温を選択してください</option>
-                                    <option value="すごく寒い">すごく寒い</option>
-                                    <option value="肌寒い">肌寒い</option>
-                                    <option value="快適な">快適</option>
-                                    <option value="少し暑い">少し暑い</option>
-                                    <option value="すごく暑い">すごく暑い</option>
-                                </select>
-                            </div>
-
-                            <button class="btn-default btn-centered" type="submit">検索</button>
-                        </form>
                         {{--<div class="col-md-4">
                             <div class="features-grid">
                                 <a href="jobs.html">

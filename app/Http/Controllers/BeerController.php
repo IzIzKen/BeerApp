@@ -119,7 +119,7 @@ class BeerController extends Controller
     {
         $temp = $request->temperature;
         switch ($temp) {
-            case $temp >= -5 && $temp < 3:
+            case $temp === 'すごく寒い':
                 $queryParams = [
                     'feeling_id' => $request->feeling_id,
                     'deepness' => '5',
@@ -127,7 +127,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp >= 3 && $temp < 11:
+            case $temp === '肌寒い':
                 $queryParams = [
                     'feeling_id' => $request->feeling_id,
                     'deepness' => '4',
@@ -135,7 +135,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp >= 11 && $temp < 19:
+            case $temp === '快適な':
                 $queryParams = [
                     'feeling_id' => $request->feeling_id,
                     'deepness' => '3',
@@ -143,7 +143,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp >= 19 && $temp < 27:
+            case $temp === '少し暑い':
                 $queryParams = [
                     'feeling_id' => $request->feeling_id,
                     'deepness' => '2',
@@ -151,7 +151,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp >= 27 && $temp < 35:
+            case $temp === 'すごく暑い':
                 $queryParams = [
                     'feeling_id' => $request->feeling_id,
                     'deepness' => '1',
