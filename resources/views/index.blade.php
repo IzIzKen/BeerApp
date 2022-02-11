@@ -48,7 +48,7 @@
                                         </label>
                                     </div>
 
-                                    <button class="btn-default btn-centered btn btn-hero animated flash infinite hero-start" type="submit">ビールを探す</button>
+                                    <button class="btn-default btn-centered btn btn-hero animated flash infinite hero-start" style="margin-left: 0!important;" type="submit">ビールを探す</button>
                                 </form>
                             </div>
                         </div>
