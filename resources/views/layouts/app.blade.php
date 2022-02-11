@@ -60,7 +60,7 @@
 @endcomponent
 
 <!-- Preloader -->
-<div class="introLoading"></div>
+{{--<div class="introLoading"></div>--}}
 
 <!-- Back to Top -->
 <div>

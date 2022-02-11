@@ -83,7 +83,7 @@
                             <ul class="event-meta list-inline">
                                 <li class="fa fa-tint tooltipster">{{ $beerFeeling->beer->alcohol }}</li>
                                 <li class="fa fa-beer tooltipster">{{ $beerFeeling->beer->style->name }}</li>
-                                <li class="fa fa-industry tooltipster">{{ $beerFeeling->beer->brewery->name }}</li>
+                                <li class="fa fa-industry tooltipster"><a href="{{ $beerFeeling->beer->brewery->web }}">{{ $beerFeeling->beer->brewery->name }}</a></li>
                             </ul>
                             <table class="table">
                                 <tbody>

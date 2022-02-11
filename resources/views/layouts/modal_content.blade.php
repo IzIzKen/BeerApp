@@ -16,7 +16,7 @@
                         <ul class="event-meta list-inline">
                             <li class="fa fa-tint tooltipster">{{ $beer->alcohol }}</li>
                             <li class="fa fa-beer tooltipster">{{ $beer->style->name }}</li>
-                            <li class="fa fa-industry tooltipster">{{ $beer->brewery->name }}</li>
+                            <li class="fa fa-industry tooltipster"><a href="{{ $beer->brewery->web }}">{{ $beer->brewery->name }}</a></li>
                         </ul>
                         <table class="table">
                             <tbody>
