@@ -19,16 +19,21 @@
                             <div class="header-content">
                                 <h1 class="title">今の自分、<br>が飲みたいビールを</h1>
                                 <p class="subtitle">今はどんな気分ですか？<br><br>「 気分 」と「 気温 」から<br>今のあなたにぴったりのビールを<br>ご紹介いたします</p>
-                                {{--<div class="btn-wrap">
-                                    <a class="btn btn-hero animated flash infinite hero-start" href="javascript:void(0);">ビールを探す</a>
-                                    <a href="{{route('index')}}" class="btn btn-hero">ビール一覧を見る</a>
-                                </div>--}}
                                 <form action="{{ route('search')}}" method="post">
                                     @csrf
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li class="fa fa-exclamation tooltipster"> {{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="btn-group">
                                         <label for="feeling_id">
                                             <select name="feeling_id" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <option>気分を選ぶ</option>
+                                                <option class="dropdown-item" value="{{ null }}">気分を選ぶ</option>
                                                 @foreach($feelings as $feeling)
                                                     <option class="dropdown-item" value="{{$feeling->id}}">{{$feeling->name}}</option>
                                                 @endforeach
@@ -38,7 +43,7 @@
                                     <div class="btn-group">
                                         <label for="temperature">
                                             <select name="temperature" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <option>気温を選ぶ</option>
+                                                <option class="dropdown-item" value="{{ null }}">気温を選ぶ</option>
                                                 <option value="すごく寒い">すごく寒い</option>
                                                 <option value="肌寒い">肌寒い</option>
                                                 <option value="快適な">快適</option>

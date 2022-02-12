@@ -14,7 +14,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="page-title"><span>{{ $feeling->name }}気分で<br>{{ $temp }}ときは . . .</span></h3>
+                        @if( is_null($temp) )
+                            <h3 class="page-title"><span>{{ $feeling->name }}気分なときは . . .</span></h3>
+                        @else
+                            <h3 class="page-title"><span>{{ $feeling->name }}気分で<br>{{ $temp }}ときは . . .</span></h3>
+                        @endif
                     </div>
                 </div>
             </div>
