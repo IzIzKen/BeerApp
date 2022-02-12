@@ -148,10 +148,6 @@ p {
 img {
   max-width: 100%;
 }
-.background-img{
-    background-image: url("public/img/67662-OD5JA0-177_resize.jpg");
-    background-size: contain;
-}
 article,
 aside {
   margin-bottom: 0;
@@ -271,6 +267,7 @@ aside {
 }
 .header-hero .btn-hero {
   background: transparent;
+  background: none;
   border: 3px #ffc930 solid;
   color: #ffffff;
   padding: 10px 20px;

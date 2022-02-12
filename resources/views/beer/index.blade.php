@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="header-wrap" style="background-image: url({{ asset('img/67662-OD5JA0-177_resize.jpg') }});">
+    <div class="header-wrap" style="background-image: url({{ asset('img/manybeers2_resize.png') }});">
 
         <!-- Navigation -->
     @component('layouts.navigation')
@@ -52,12 +52,9 @@
 
 
             <!-- Load More -->
-                {{--<div class="load-more-wrapper">
-                    <a href="javascript:void(0);"><i class="fa fa-refresh"></i> Load More</a>
-                </div>--}}
                 <div class="row">
                     <div class="col-sm-12">
-                        <div{{-- class="dataTables_paginate paging_simple_numbers"--}}>
+                        <div>
                             {{ $beers->links('layouts.default') }}
                         </div>
                     </div>

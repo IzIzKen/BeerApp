@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="header-wrap" style="background-image: url({{ asset('img/67662-OD5JA0-177_resize.jpg') }});">
+    <div class="header-wrap" style="background-image: url({{ asset('img/neon.jpg') }});">
 
         <!-- Navigation -->
     @component('layouts.navigation')
@@ -60,7 +60,13 @@
 
 
             <!-- Load More -->
-
+                {{--<div class="row">
+                    <div class="col-sm-12">
+                        <div>
+                            {{ $beerFeelings->links('layouts.default') }}
+                        </div>
+                    </div>
+                </div>--}}
             </div>
         </section>
 

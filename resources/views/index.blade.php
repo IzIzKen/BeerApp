@@ -33,9 +33,9 @@
                                     <div class="btn-group">
                                         <label for="feeling_id">
                                             <select name="feeling_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <option class="dropdown-item" value="{{ null }}">気分を選ぶ</option>
+                                                <option class="dropdown-header" value="{{ null }}">気分を選ぶ</option>
                                                 @foreach($feelings as $feeling)
-                                                    <option class="dropdown-item" value="{{$feeling->id}}">{{$feeling->name}}</option>
+                                                    <option value="{{$feeling->id}}">{{$feeling->name}}</option>
                                                 @endforeach
                                             </select>
                                         </label>
@@ -43,7 +43,7 @@
                                     <div class="btn-group">
                                         <label for="temperature">
                                             <select name="temperature" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <option class="dropdown-item" value="{{ null }}">気温を選ぶ</option>
+                                                <option value="{{ null }}">気温を選ぶ</option>
                                                 <option value="すごく寒い">すごく寒い</option>
                                                 <option value="肌寒い">肌寒い</option>
                                                 <option value="快適な">快適</option>
