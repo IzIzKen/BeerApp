@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\beerFeeling;
 use App\Models\Beer;
 use App\Models\Feeling;
+use App\Models\Temperature;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -119,27 +120,17 @@ class BeerController extends Controller
     function search(BeersSearchRequest $request)
     {
 //        dd($request);
-        $temp = $request->temperature;//フォームリクエスト付ける
+        $temp_id = $request->temperature_id;
         $feeling_id = $request->feeling_id;
 
         //気温と気分が両方とも選択されない場合
-        if (is_null($temp) and is_null($feeling_id)){
+        if (is_null($temp_id) and is_null($feeling_id)){
             return $this->index($request);
         }
 
-        /*//気温のみ選択されない場合
-        elseif ($temp === 'null'){
-            dd($request);
-        }
-
-        //気分のみ選択されない場合
-        elseif ($feeling_id === 'null'){
-            dd($request);
-        }*/
-
         //気温と気分が両方とも選択された場合
         switch ($feeling_id) {
-            case $temp === 'すごく寒い':
+            case $temp_id == 1:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '5',
@@ -147,7 +138,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp === '肌寒い':
+            case $temp_id == 2:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '4',
@@ -155,7 +146,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp === '快適な':
+            case $temp_id == 3:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '3',
@@ -163,7 +154,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp === '少し暑い':
+            case $temp_id == 4:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '2',
@@ -171,7 +162,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp === 'すごく暑い':
+            case $temp_id == 5:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '1',
@@ -179,7 +170,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp === null:
+            case $temp_id === null:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '0',
@@ -188,8 +179,10 @@ class BeerController extends Controller
                 break;
         }
 
+//        dd($queryParams);
         $beerFeelings = beerFeeling::query()->search($queryParams)->get();
         $feeling = Feeling::all()->find($feeling_id);
+        $temp = Temperature::all()->find($temp_id);
 
         return view('beer.search', compact('beerFeelings', 'feeling', 'temp'));
     }

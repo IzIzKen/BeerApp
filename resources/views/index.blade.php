@@ -41,14 +41,12 @@
                                         </label>
                                     </div>
                                     <div class="btn-group">
-                                        <label for="temperature">
-                                            <select name="temperature" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <option value="{{ null }}">気温を選ぶ</option>
-                                                <option value="すごく寒い">すごく寒い</option>
-                                                <option value="肌寒い">肌寒い</option>
-                                                <option value="快適な">快適</option>
-                                                <option value="少し暑い">少し暑い</option>
-                                                <option value="すごく暑い">すごく暑い</option>
+                                        <label for="temperature_id">
+                                            <select name="temperature_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <option class="dropdown-header" value="{{ null }}">気温を選ぶ</option>
+                                                @foreach($temps as $temp)
+                                                    <option value="{{$temp->id}}">{{$temp->temp}}</option>
+                                                @endforeach
                                             </select>
                                         </label>
                                     </div>

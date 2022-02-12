@@ -24,7 +24,7 @@ class BeersSearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'feeling_id' => ['required_with:temperature'],
+            'feeling_id' => ['required_with:temperature_id'],
 //            'temperature' => ['required'],
         ];
     }

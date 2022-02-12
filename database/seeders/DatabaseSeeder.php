@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             FeelingsTableSeeder::class,
             BeersTableSeeder::class,
             BeerFeelingTableSeeder::class,
+            TemperatureTableSeeder::class
         ]);
     }
 }
