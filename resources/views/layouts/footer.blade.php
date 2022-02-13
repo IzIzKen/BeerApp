@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <!-- Copyright -->
-                <div class="footer-secondary-left col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                {{--<div class="footer-secondary-left col-lg-8 col-md-6 col-sm-6 col-xs-12">
 
                     <form class="form-inline" data-parsley-validate data-parsley-errors-messages-disabled>
                         <div class="footer-newsletter form-group">
@@ -24,7 +24,8 @@
                         <li><a class="fa fa-twitter tooltipster" title="Twitter" href="javascript:void(0)"></a></li>
                         <li><a class="fa fa-instagram tooltipster" title="Instagram" href="javascript:void(0)"></a></li>
                     </ul>
-                </div>
+                </div>--}}
+                <p class="copyright"  style="text-align: center;!important;">&copy; 2022 izu-ken </p>
             </div>
         </div>
     </footer>
