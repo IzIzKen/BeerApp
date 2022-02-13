@@ -29,14 +29,23 @@ class BeerController extends Controller
             'pageName' => 'page',
             'page' => 1,
         ], $page);
-        $beers = Beer::query()->oldest('id')->paginate(
+        /*$beers = Beer::query()->oldest('id')->paginate(
+            $options['perPage'],
+            $options['columns'],
+            $options['pageName'],
+            $options['page'],
+        );*/
+        $queryParams = [
+            'feeling_id' => null,
+        ];
+        $beerFeelings = beerFeeling::query()->search($queryParams)->oldest('beer_id')->paginate(
             $options['perPage'],
             $options['columns'],
             $options['pageName'],
             $options['page'],
         );
 
-        return view('beer.index', compact('beers'));
+        return view('beer.index', compact('beerFeelings'));
     }
 
     /**

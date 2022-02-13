@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Beer;
+use App\Models\beerFeeling;
 use App\Models\Feeling;
 use App\Models\Temperature;
 use Illuminate\Http\Request;
@@ -15,8 +16,13 @@ class WebController extends Controller
         $feelings = Feeling::all();
         $temps = Temperature::all();
         $today = Carbon::today();
-        $beers = Beer::inRandomOrder($today->getTimestamp())->take(8)->get();
+        $queryParams = [
+            'feeling_id' => null,
+        ];
 
-        return view('index', compact('feelings', 'temps', 'beers'));
+        $beerFeelings = beerFeeling::query()->search($queryParams)->inRandomOrder($today->getTimestamp())->take(8)->get();
+
+
+        return view('index', compact('feelings', 'temps', 'beerFeelings'));
     }
 }

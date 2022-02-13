@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <ol class="list-inline list-unstyled" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                <a itemprop="item" href="{{route('home')}}"><span itemprop="name">Home</span></a>
+                                <a itemprop="item" href="{{ route('home') }}"><span itemprop="name">Home</span></a>
                                 <meta itemprop="position" content="1">
                             </li>
                             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
@@ -45,7 +45,7 @@
 
         <section class="page-section">
             <div class="container">
-            @component('layouts.beers', ['beers'=>$beers])
+            @component('layouts.beers', ['beerFeelings'=>$beerFeelings])
             @endcomponent
 
 
@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div>
-                            {{ $beers->links('layouts.default') }}
+                            {{ $beerFeelings->links('layouts.default') }}
                         </div>
                     </div>
                 </div>
@@ -65,22 +65,8 @@
     </main>
 
     <!-- Modal Content -->
-    @component('layouts.modal_content', ['beers'=>$beers])
+    @component('layouts.modal_content', ['beerFeelings'=>$beerFeelings])
     @endcomponent
-    {{--
-
-        <h2>一覧表示</h2>
-        @foreach($beers as $beer)
-            <div>
-                <a href="{{ route('show', $beer) }}" class="img-thumbnail">
-                    <img src="{{ asset('img/dummy.png') }}">
-                </a>
-                <h5>名前：{{$beer->name}}</h5>
-            </div>
-        @endforeach
-
-        <a href="/">Top Page</a>
-    --}}
 
 @endsection
 

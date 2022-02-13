@@ -38,7 +38,7 @@
                                 <meta itemprop="position" content="1">
                             </li>
                             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                <a itemprop="item" href="{{route('index')}}"><span itemprop="name">Beers</span></a>
+                                <a itemprop="item" href="{{ route('index') }}"><span itemprop="name">Beers</span></a>
                                 <meta itemprop="position" content="2">
                             </li>
                             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
@@ -53,13 +53,29 @@
 
         <section class="page-section">
             <div class="container">
-            @component('layouts.beers', ['beers'=>$beerFeelings])
-            @endcomponent
+                {{--@component('layouts.beers', ['beers'=>$beerFeelings])
+                @endcomponent--}}
+                <div class="row isotope-wrapper isotope-beers-wrapper">
+                    <div class="isotope isotope-beers gutter">
+                        @foreach($beerFeelings as $beerFeeling)
+                            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6 col-xs-12">
+                                <div class="grid-wrapper">
+                                    <a href="javascript:void(0);" data-remodal-target="bottle-{{$beerFeeling->id}}">
+                                        <figure style="background-image: url('{{$beerFeeling->img_url}}'); background-size: contain">
+                                            <figcaption class="grid-content">
+                                                <h5 class="grid-title"><span>{{$beerFeeling->name}}</span></h5>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+                                    <h5>{{$beerFeeling->name}}</h5>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
 
 
-
-
-            <!-- Load More -->
+                <!-- Load More -->
                 {{--<div class="row">
                     <div class="col-sm-12">
                         <div>
@@ -83,7 +99,7 @@
                 <div class="row">
                     <div class="col-md-5 col-sm-12 col-xs-12">
                         <div class="item-modal-image" style="background-size: contain">
-                            <a class="image-lightbox" href="{{$beerFeeling->beer->img_url}}"><img alt="" src="{{url($beerFeeling->beer->img_url)}}"/></a>
+                            <a class="image-lightbox" href="{{$beerFeeling->beer->img_url}}"><img alt="" src="{{ url($beerFeeling->beer->img_url) }}"/></a>
                         </div>
                     </div>
                     <div class="col-md-7 col-sm-12 col-xs-12">

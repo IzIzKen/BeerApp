@@ -29,7 +29,9 @@ class beerFeeling extends Pivot
                     ->where('beers.strength', '>=', $queryParams['strength']);
             }
 
-            $join->where('feeling_id', $queryParams['feeling_id']);
+            if (!is_null($queryParams['feeling_id'])){
+                $join->where('feeling_id', $queryParams['feeling_id']);
+            }
 
         });
 

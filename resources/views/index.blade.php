@@ -119,7 +119,7 @@
         <section class="page-section home-section">
             <div class="container" data-aos="fade-up" data-aos-offset="200">
                 <h3 class="section-heading"><span>本日のおすすめ</span></h3>
-                @component('layouts.beers', ['beers'=>$beers])
+                @component('layouts.beers', ['beerFeelings'=>$beerFeelings])
                 @endcomponent
 
 
@@ -133,7 +133,7 @@
     </main>
 
     <!-- Modal Content -->
-    @component('layouts.modal_content', ['beers'=>$beers])
+    @component('layouts.modal_content', ['beerFeelings'=>$beerFeelings])
     @endcomponent
 
     <!-- /.enry-content -->
