@@ -53,9 +53,9 @@
 
         <section class="page-section">
             <div class="container">
-                {{--@component('layouts.beers', ['beers'=>$beerFeelings])
-                @endcomponent--}}
-                <div class="row isotope-wrapper isotope-beers-wrapper">
+                @component('layouts.beers', ['beerFeelings'=>$beerFeelings])
+                @endcomponent
+                {{--<div class="row isotope-wrapper isotope-beers-wrapper">
                     <div class="isotope isotope-beers gutter">
                         @foreach($beerFeelings as $beerFeeling)
                             <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6 col-xs-12">
@@ -72,7 +72,7 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
+                </div>--}}
 
 
                 <!-- Load More -->

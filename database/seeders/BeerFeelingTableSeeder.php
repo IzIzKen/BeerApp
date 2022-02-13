@@ -14,6 +14,6 @@ class BeerFeelingTableSeeder extends Seeder
      */
     public function run()
     {
-        beerFeeling::factory()->count(100)->create();
+        beerFeeling::factory()->count(1000)->create();
     }
 }
