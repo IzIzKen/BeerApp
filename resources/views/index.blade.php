@@ -50,8 +50,10 @@
                                             </select>
                                         </label>
                                     </div>
-
-                                    <button class="btn-default btn-centered btn btn-hero animated flash infinite hero-start" style="margin-left: 0!important;" type="submit">ビールを探す</button>
+                                    <div style="display: flex">
+                                        <button class="btn-default btn-centered btn btn-hero animated flash infinite hero-start" style="margin-left: 0!important;" type="submit">ビールを探す</button>
+                                        <a class="btn-default btn-centered btn btn-hero" style="margin-left: 0!important;" href="{{ route('index') }}">ビール一覧を見る</a>
+                                    </div>
                                 </form>
                             </div>
                         </div>

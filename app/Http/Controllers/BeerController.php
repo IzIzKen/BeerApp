@@ -124,9 +124,9 @@ class BeerController extends Controller
         $feeling_id = $request->feeling_id;
 
         //気温と気分が両方とも選択されない場合
-        if (is_null($temp_id) and is_null($feeling_id)){
+        /*if (is_null($temp_id) and is_null($feeling_id)){
             return $this->index($request);
-        }
+        }*/
 
         //気温と気分が両方とも選択された場合
         switch ($feeling_id) {

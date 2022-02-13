@@ -24,8 +24,8 @@ class BeersSearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'feeling_id' => ['required_with:temperature_id'],
-//            'temperature' => ['required'],
+            'feeling_id' => ['required'],
+            'temperature_id' => ['required'],
         ];
     }
 
@@ -35,8 +35,8 @@ class BeersSearchRequest extends FormRequest
     public function messages()
     {
         return [
-            'feeling_id.required_with' => '気分も選択してください',
-//            'temperature.required' => '気温を選択してください',
+            'feeling_id.required' => '気分を選択してください',
+            'temperature_id.required' => '気温を選択してください',
         ];
     }
 }
