@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="header-wrap" style="background-image: url({{ asset('img/manybeers2_resize.png') }});">
+    <div class="header-wrap" style="background-image: url({{ asset('img/manybeers2_resize.png') }}); background-size: cover">
 
         <!-- Navigation -->
     @component('layouts.navigation')

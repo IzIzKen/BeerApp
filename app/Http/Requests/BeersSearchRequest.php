@@ -25,7 +25,7 @@ class BeersSearchRequest extends FormRequest
     {
         return [
             'feeling_id' => ['required'],
-            'temperature_id' => ['required'],
+            'temperature_id' => ['nullable'],
         ];
     }
 
@@ -36,7 +36,7 @@ class BeersSearchRequest extends FormRequest
     {
         return [
             'feeling_id.required' => '気分を選択してください',
-            'temperature_id.required' => '気温を選択してください',
+//            'temperature_id.required_with' => '気温を選択してください',
         ];
     }
 }
