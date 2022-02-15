@@ -1,16 +1,3 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="isotope-filters" role="group">
-            <div class="btn-group">
-                <button type="button" class="btn our-beers-btn is-checked" data-filter="*">All</button>
-                <button type="button" class="btn our-beers-btn" data-filter=".bottles">Bottles</button>
-                <button type="button" class="btn our-beers-btn" data-filter=".taps">Taps</button>
-                <button type="button" class="btn our-beers-btn" data-filter=".speciality">Speciality</button>
-                <button type="button" class="btn our-beers-btn" data-filter=".other">Other</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="row isotope-wrapper isotope-beers-wrapper">
     <div class="isotope isotope-beers gutter">
         @foreach($beerFeelings as $beerFeeling)

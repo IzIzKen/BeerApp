@@ -63,7 +63,7 @@
                 <div class="row isotope-wrapper isotope-beers-wrapper">
                     <div class="isotope isotope-beers gutter">
                         @foreach($beers as $beer)
-                            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6 col-xs-12">
+                            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6 col-xs-12" {{--ここにdata-filterに当てはまるclassを記述--}}>
                                 <div class="grid-wrapper">
                                     <a href="javascript:void(0);" data-remodal-target="bottle-{{$beer->id}}">
                                         <figure style="background-image: url('{{$beer->img_url}}'); background-size: contain">
