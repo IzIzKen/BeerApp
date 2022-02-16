@@ -15,9 +15,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         @if( is_null($temp) )
-                            <h3 class="page-title"><span>{{ $feeling->name }}<br>気分なときは . . .</span></h3>
+                            <h3 class="page-title"><span>{{ $feeling->name }}<br>な気分なときは . . .</span></h3>
                         @else
-                            <h3 class="page-title"><span>{{ $feeling->name }}気分で<br>{{ $temp->temp }}ときは . . .</span></h3>
+                            <h3 class="page-title"><span>{{ $feeling->name }}な気分で<br>{{ $temp->temp }}ときは . . .</span></h3>
                         @endif
                     </div>
                 </div>

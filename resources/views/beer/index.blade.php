@@ -47,7 +47,7 @@
             <div class="container">
                 {{--@component('layouts.beers', ['beerFeelings'=>$beerFeelings])
                 @endcomponent--}}
-                <div class="row">
+                {{--<div class="row">
                     <div class="col-md-12">
                         <div class="isotope-filters" role="group">
                             <div class="btn-group">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>--}}
                 <div class="row isotope-wrapper isotope-beers-wrapper">
                     <div class="isotope isotope-beers gutter">
                         @foreach($beers as $beer)
