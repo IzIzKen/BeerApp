@@ -185,7 +185,8 @@
         }).then((json) => {
             // 都市名、国名
             $('#place').text(json.city.name + ', ' + json.city.country);
-
+            console.log('都市名：' + data.city.name);
+            console.log('国名：' + data.city.country);
             // 天気予報データ
             json.list.forEach(function(forecast, index) {
                 const dateTime = new Date(utcToJSTime(forecast.dt));
@@ -196,6 +197,11 @@
                 const temperature = Math.round(forecast.main.temp);
                 const description = forecast.weather[0].description;
                 const iconPath = `img/weather/${forecast.weather[0].icon}.svg`;
+
+                console.log('日時：' + `${month}/${date} ${hours}:${min}`);
+                console.log('気温：' + temperature);
+                console.log('天気：' + description);
+                console.log('画像パス：' + iconPath);
 
                 if(index === 0) {
                     const currentWeather = `
