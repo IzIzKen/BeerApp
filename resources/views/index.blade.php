@@ -32,7 +32,7 @@
                                     @endif
                                     <div class="btn-group">
                                         <label for="feeling_id">
-                                            <select name="feeling_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <select name="feeling_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:30px;">
                                                 <option class="dropdown-header" value="{{ null }}">気分を選ぶ</option>
                                                 @foreach($feelings as $feeling)
                                                     <option value="{{$feeling->id}}">{{$feeling->name}}</option>
@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="btn-group">
                                         <label for="temperature_id">
-                                            <select name="temperature_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <select name="temperature_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px; border-radius:30px;">
                                                 <option class="dropdown-header" value="{{ null }}">気温を選ぶ</option>
                                                 @foreach($temps as $temp)
                                                     <option value="{{$temp->id}}">{{$temp->temp}}</option>
@@ -51,7 +51,7 @@
                                         </label>
                                     </div>
                                     <div style="display: flex">
-                                        <button class="btn-default btn-centered btn btn-hero animated flash infinite hero-start" style="margin-left: 0!important;" type="submit">ビールを探す</button>
+                                        <button class="btn-default btn-centered btn btn-hero animated flash infinite" style="margin-left: 0!important; border-radius:30px; animation-duration: 4s;" type="submit">ビールを探す</button>
                                         <a class="btn-default btn-centered btn btn-hero" style="margin-left: 0!important;" href="{{ route('index') }}">ビール一覧を見る</a>
                                     </div>
                                 </form>
@@ -198,10 +198,12 @@
                 const description = forecast.weather[0].description;
                 const iconPath = `img/weather/${forecast.weather[0].icon}.svg`;
 
-                console.log('日時：' + `${month}/${date} ${hours}:${min}`);
-                console.log('気温：' + temperature);
-                console.log('天気：' + description);
-                console.log('画像パス：' + iconPath);
+                if (hours === 12){
+                    console.log('日時：' + `${month}/${date} ${hours}:${min}`);
+                    console.log('気温：' + temperature);
+                    console.log('天気：' + description);
+                    console.log('画像パス：' + iconPath);
+                }
 
                 if(index === 0) {
                     const currentWeather = `
@@ -213,7 +215,7 @@
                     </p>
                 </div>`;
                     $('#weather').html(currentWeather);
-                } else {
+                } else if (hours === 12){
                     const tableRow = `
                 <tr>
                     <td class="info">
