@@ -185,8 +185,8 @@
         }).then((json) => {
             // 都市名、国名
             $('#place').text(json.city.name + ', ' + json.city.country);
-            console.log('都市名：' + data.city.name);
-            console.log('国名：' + data.city.country);
+            console.log('都市名：' + json.city.name);
+            console.log('国名：' + json.city.country);
             // 天気予報データ
             json.list.forEach(function(forecast, index) {
                 const dateTime = new Date(utcToJSTime(forecast.dt));
