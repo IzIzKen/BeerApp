@@ -131,6 +131,14 @@
             </div>
         </section>
 
+        <h3 id="place"></h3>
+        <div id="now">
+            <div id="weather">
+            </div>
+        </div>
+        <table id="forecast">
+        </table>
+
 
     </main>
 
@@ -144,6 +152,7 @@
 
 @endsection
 <script>
+    const API_KEY = "997b02747a4686d1fb4dc1e20487ff1c"
     const options = {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -151,60 +160,72 @@
     };
 
     function success(pos) {
-        let crd = pos.coords;
-
-        /*console.log(`Latitude : ${crd.latitude}`);//緯度
-        console.log(`Longitude: ${crd.longitude}`);//経度
-        console.log(`More or less ${crd.accuracy} meters.`);*///高度
-
-        return crd;
+        // 現在地の緯度経度を取得
+        latitude = pos.coords.latitude;
+        longitude = pos.coords.longitude;
+        window.onload = function() {
+            weather_search()
+        };
     }
 
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
+    //現在地の取得：成功→success or 失敗→error
     navigator.geolocation.getCurrentPosition(success, error, options);
 
-    const API_KEY = "997b02747a4686d1fb4dc1e20487ff1c"
-
-    window.onload = function() {
-        weather_search()
-    };
-
-    // 現在地の緯度経度を取得
-    navigator.geolocation.getCurrentPosition(function (position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-
-    });
+    //天気の取得
     const weather_search = function () {
 
-        const url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude  + '&units=metric&appid=' + API_KEY;
+        const url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude  + '&units=metric&lang=ja&appid=' + API_KEY;
 
         fetch(url).then((data) => {
             return data.json();
         }).then((json) => {
-            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-            console.log(json);
+            // 都市名、国名
+            $('#place').text(json.city.name + ', ' + json.city.country);
+
+            // 天気予報データ
+            json.list.forEach(function(forecast, index) {
+                const dateTime = new Date(utcToJSTime(forecast.dt));
+                const month = dateTime.getMonth() + 1;
+                const date = dateTime.getDate();
+                const hours = dateTime.getHours();
+                const min = String(dateTime.getMinutes()).padStart(2, '0');
+                const temperature = Math.round(forecast.main.temp);
+                const description = forecast.weather[0].description;
+                const iconPath = `img/weather/${forecast.weather[0].icon}.svg`;
+
+                if(index === 0) {
+                    const currentWeather = `
+                <div class="icon"><img src="${iconPath}"></div>
+                <div class="info">
+                    <p>
+                        <span class="description">現在の天気：${description}</span>
+                        <span class="temp">${temperature}</span>°C
+                    </p>
+                </div>`;
+                    $('#weather').html(currentWeather);
+                } else {
+                    const tableRow = `
+                <tr>
+                    <td class="info">
+                        ${month}/${date} ${hours}:${min}
+                    </td>
+                    <td class="icon"><img src="${iconPath}"></td>
+                    <td><span class="description">${description}</span></td>
+                    <td><span class="temp">${temperature}°C</span></td>
+                </tr>`;
+                    $('#forecast').append(tableRow);
+                }
+            });
         }).catch(error => {
             console.error(error);
         });
     };
 
-    function weatherJavaneseConversion(name) {
-        switch (name) {
-            case "Clear":
-                return "晴れ"
-            case 'Clouds':
-                return "曇り"
-            case "Rain":
-                return "雨"
-            case "Snow":
-                return "雪"
-            default:
-                console.log(name)
-                return name
-        }
+    function utcToJSTime(UTCTime){
+        return UTCTime*1000;
     }
 </script>
