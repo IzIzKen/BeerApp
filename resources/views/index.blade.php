@@ -143,3 +143,68 @@
 
 
 @endsection
+<script>
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+
+    function success(pos) {
+        let crd = pos.coords;
+
+        /*console.log(`Latitude : ${crd.latitude}`);//緯度
+        console.log(`Longitude: ${crd.longitude}`);//経度
+        console.log(`More or less ${crd.accuracy} meters.`);*///高度
+
+        return crd;
+    }
+
+    function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+
+    const API_KEY = "997b02747a4686d1fb4dc1e20487ff1c"
+
+    window.onload = function() {
+        weather_search()
+    };
+
+    // 現在地の緯度経度を取得
+    navigator.geolocation.getCurrentPosition(function (position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+
+    });
+    const weather_search = function () {
+
+        const url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude  + '&units=metric&appid=' + API_KEY;
+
+        fetch(url).then((data) => {
+            return data.json();
+        }).then((json) => {
+            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+            console.log(json);
+        }).catch(error => {
+            console.error(error);
+        });
+    };
+
+    function weatherJavaneseConversion(name) {
+        switch (name) {
+            case "Clear":
+                return "晴れ"
+            case 'Clouds':
+                return "曇り"
+            case "Rain":
+                return "雨"
+            case "Snow":
+                return "雪"
+            default:
+                console.log(name)
+                return name
+        }
+    }
+</script>

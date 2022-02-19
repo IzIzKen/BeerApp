@@ -40,6 +40,16 @@
 
     <!-- Modernizr -->
     <script src="{{ asset('js/vendor/modernizr.js') }}"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ10ZFXGBF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YQ10ZFXGBF');
+    </script>
 </head>
 <body id="app" class="home">
 <!--[if lt IE 8]>
