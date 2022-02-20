@@ -119,13 +119,13 @@ class BeerController extends Controller
     public
     function search(BeersSearchRequest $request)
     {
-//        dd($request);
-        $temp_id = $request->temperature_id;
+//        dd($request->temperature);
+        $temp = $request->temperature;
         $feeling_id = $request->feeling_id;
 
         //気温と気分が両方とも選択された場合
         switch ($feeling_id) {
-            case $temp_id == 1:
+            case $temp <= 0:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '5',
@@ -133,7 +133,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp_id == 2:
+            case 0 < $temp and $temp <= 10:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '4',
@@ -141,7 +141,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp_id == 3:
+            case 10 < $temp and $temp <= 20:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '3',
@@ -149,7 +149,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp_id == 4:
+            case 20 < $temp and $temp <= 30:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '2',
@@ -157,7 +157,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp_id == 5:
+            case 30 < $temp:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '1',
@@ -165,7 +165,7 @@ class BeerController extends Controller
                 ];
                 break;
 
-            case $temp_id === null:
+            case $temp === null:
                 $queryParams = [
                     'feeling_id' => $feeling_id,
                     'deepness' => '0',
@@ -177,8 +177,7 @@ class BeerController extends Controller
 //        dd($queryParams);
         $beerFeelings = beerFeeling::query()->search($queryParams)->get();
         $feeling = Feeling::all()->find($feeling_id);
-        $temp = Temperature::all()->find($temp_id);
 
-        return view('beer.search', compact('beerFeelings', 'feeling', 'temp'));
+        return view('beer.search', compact('beerFeelings', 'feeling'));
     }
 }

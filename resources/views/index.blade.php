@@ -42,11 +42,16 @@
                                     </div>
                                     <div class="btn-group">
                                         <label for="temperature_id">
-                                            <select name="temperature_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px; border-radius:30px;">
-                                                <option class="dropdown-header" value="{{ null }}">気温を選ぶ</option>
-                                                @foreach($temps as $temp)
+                                            <select name="temperature" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px; border-radius:30px;">
+                                                <option id="temp" class="dropdown-header" value="{{ null }}">気温を選ぶ</option>
+                                                <option value="-5">~ 0℃</option>
+                                                @for ($i = 1; $i < 30; $i+=10)
+                                                    <option value="{{$i + 4}}">{{$i}} ~ {{$i + 9}}℃</option>
+                                                @endfor
+                                                <option value="35">31℃ ~</option>
+                                                {{--@foreach($temps as $temp)
                                                     <option value="{{$temp->id}}">{{$temp->temp}}</option>
-                                                @endforeach
+                                                @endforeach--}}
                                             </select>
                                         </label>
                                     </div>
@@ -134,13 +139,11 @@
         <!-- Technologies / Clients -->
         <section class="page-section home-section">
             <div class="container" data-aos="fade-up" data-aos-offset="200">
-                <h3 class="section-heading"><span>Award Winning</span></h3>
+                <h3 class="section-heading"><span>今週のおすすめ</span></h3>
                 <div class="row">
                     <div id="forecast" class="clients-carousel">
                         @for ($i = 0; $i < 5; $i++)
                             <div class="client-item weather{{ $i }}">
-                                {{--<a href="javascript:void(0);"><img alt="" src="img/dummy.png"/></a>
-                                <h4 class="award-title">Award Title</h4>--}}
                             </div>
                         @endfor
                     </div>
@@ -190,6 +193,7 @@
         fetch(url).then((data) => {
             return data.json();
         }).then((json) => {
+            console.log(json);
             // 都市名、国名
             $('#place').text(json.city.name + ', ' + json.city.country);
             let i = 0;
@@ -213,14 +217,22 @@
                     console.log('画像パス：' + iconPath);
                 }*/
                 //今日から5日分の天気を表示
-                if (hours === 12) {
+                if (index % 8 === 0) {
+                    console.log(index);
+                    //現在の気温をプルダウンに
+                    if (index === 0){
+                        const addCurrentTemp = `
+                        <option value="${ temperature }">現在位置の気温</option>
+                    `;
+                        $('#temp').after(addCurrentTemp);
+                    }
                     const weekWeather = `
                     <a href="javascript:void(0);"><img src="${iconPath}"></a>
                     <div class="info">
-                        <p>
-                            <span class="description">${month}/${date}：${description}</span>
-                            <span class="temp">${temperature}</span>°C
-                        </p>
+                        <div style="text-align: center">
+                            <span>${month}/${date}：${description}</span>
+                            <span>${temperature}</span>°C
+                        </div>
                     </div>`;
                     $('.weather' + i).html(weekWeather);
                     i += 1;

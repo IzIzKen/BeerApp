@@ -2224,8 +2224,8 @@ figure:not(.format-video):hover::after,
   margin: 0 auto;
   width: 150px;
   height: 150px;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  /*-webkit-filter: grayscale(100%);
+  filter: grayscale(100%);*/
 }
 .page-section:nth-of-type(even) .testimonial-item blockquote::before {
   border-color: transparent #f2f2f2 transparent transparent;

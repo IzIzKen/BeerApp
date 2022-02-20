@@ -1075,9 +1075,9 @@ jQuery(document).ready(function () {
      * https://github.com/lcdsantos/jQuery-Selectric
      *************************************************************/
 
-    if ($('select').length) {
+    /*if ($('select').length) {
         $('select').selectric();
-    }
+    }*/
 
     /*************************************************************
      * Tooltips
