@@ -884,7 +884,7 @@ jQuery(document).ready(function () {
                 breakpoint: 767,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToScroll: 1,
                     dots: true,
                     draggable: true,
                 }
@@ -893,7 +893,7 @@ jQuery(document).ready(function () {
                 breakpoint: 481,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToScroll: 1,
                     dots: false,
                     draggable: true,
                 }

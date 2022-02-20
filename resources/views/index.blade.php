@@ -32,7 +32,7 @@
                                     @endif
                                     <div class="btn-group">
                                         <label for="feeling_id">
-                                            <select name="feeling_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:30px;">
+                                            <select name="feeling_id" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px; border-radius:30px;">
                                                 <option class="dropdown-header" value="{{ null }}">気分を選ぶ</option>
                                                 @foreach($feelings as $feeling)
                                                     <option value="{{$feeling->id}}">{{$feeling->name}}</option>
@@ -131,15 +131,22 @@
             </div>
         </section>
 
-        <h3 id="place"></h3>
-        <div id="now">
-            <div id="weather">
+        <!-- Technologies / Clients -->
+        <section class="page-section home-section">
+            <div class="container" data-aos="fade-up" data-aos-offset="200">
+                <h3 class="section-heading"><span>Award Winning</span></h3>
+                <div class="row">
+                    <div id="forecast" class="clients-carousel">
+                        @for ($i = 0; $i < 5; $i++)
+                            <div class="client-item weather{{ $i }}">
+                                {{--<a href="javascript:void(0);"><img alt="" src="img/dummy.png"/></a>
+                                <h4 class="award-title">Award Title</h4>--}}
+                            </div>
+                        @endfor
+                    </div>
+                </div>
             </div>
-        </div>
-        <table id="forecast">
-        </table>
-
-
+        </section>
     </main>
 
     <!-- Modal Content -->
@@ -163,7 +170,7 @@
         // 現在地の緯度経度を取得
         latitude = pos.coords.latitude;
         longitude = pos.coords.longitude;
-        window.onload = function() {
+        window.onload = function () {
             weather_search()
         };
     }
@@ -178,17 +185,18 @@
     //天気の取得
     const weather_search = function () {
 
-        const url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude  + '&units=metric&lang=ja&appid=' + API_KEY;
+        const url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric&lang=ja&appid=' + API_KEY;
 
         fetch(url).then((data) => {
             return data.json();
         }).then((json) => {
             // 都市名、国名
             $('#place').text(json.city.name + ', ' + json.city.country);
-            console.log('都市名：' + json.city.name);
-            console.log('国名：' + json.city.country);
+            let i = 0;
+            /*console.log('都市名：' + json.city.name);
+            console.log('国名：' + json.city.country);*/
             // 天気予報データ
-            json.list.forEach(function(forecast, index) {
+            json.list.forEach(function (forecast, index) {
                 const dateTime = new Date(utcToJSTime(forecast.dt));
                 const month = dateTime.getMonth() + 1;
                 const date = dateTime.getDate();
@@ -198,42 +206,43 @@
                 const description = forecast.weather[0].description;
                 const iconPath = `img/weather/${forecast.weather[0].icon}.svg`;
 
-                if (hours === 12){
+                /*if (hours === 12) {
                     console.log('日時：' + `${month}/${date} ${hours}:${min}`);
                     console.log('気温：' + temperature);
                     console.log('天気：' + description);
                     console.log('画像パス：' + iconPath);
+                }*/
+                //今日から5日分の天気を表示
+                if (hours === 12) {
+                    const weekWeather = `
+                    <a href="javascript:void(0);"><img src="${iconPath}"></a>
+                    <div class="info">
+                        <p>
+                            <span class="description">${month}/${date}：${description}</span>
+                            <span class="temp">${temperature}</span>°C
+                        </p>
+                    </div>`;
+                    $('.weather' + i).html(weekWeather);
+                    i += 1;
                 }
-
-                if(index === 0) {
+                /*if (index === 0) {
                     const currentWeather = `
-                <div class="icon"><img src="${iconPath}"></div>
-                <div class="info">
-                    <p>
-                        <span class="description">現在の天気：${description}</span>
-                        <span class="temp">${temperature}</span>°C
-                    </p>
-                </div>`;
-                    $('#weather').html(currentWeather);
-                } else if (hours === 12){
-                    const tableRow = `
-                <tr>
-                    <td class="info">
-                        ${month}/${date} ${hours}:${min}
-                    </td>
-                    <td class="icon"><img src="${iconPath}"></td>
-                    <td><span class="description">${description}</span></td>
-                    <td><span class="temp">${temperature}°C</span></td>
-                </tr>`;
-                    $('#forecast').append(tableRow);
-                }
+                    <div class="icon"><img src="${iconPath}"></div>
+                    <div class="info">
+                        <p>
+                            <span class="description">現在の天気：${description}</span>
+                            <span class="temp">${temperature}</span>°C
+                        </p>
+                    </div>`;
+                    // $('#weather').html(currentWeather);
+                } */
             });
         }).catch(error => {
             console.error(error);
         });
     };
 
-    function utcToJSTime(UTCTime){
-        return UTCTime*1000;
+    function utcToJSTime(UTCTime) {
+        return UTCTime * 1000;
     }
 </script>
