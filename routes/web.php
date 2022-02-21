@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'WebController@index')->name('home');
-Route::get('/test', function (){
-    return view('index2');
-});
 Route::get('beer', 'BeerController@index')->name('index');
 Route::get('beer/{id}', 'Beercontroller@show')->name('show');
 Route::post('search', 'BeerController@search')->name('search');
+
+Route::post('/', 'WebController@forecast');

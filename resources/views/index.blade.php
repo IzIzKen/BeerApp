@@ -150,6 +150,7 @@
                 </div>
             </div>
         </section>
+        <button id="bt2">button</button>
     </main>
 
     <!-- Modal Content -->
@@ -209,23 +210,40 @@
                 const temperature = Math.round(forecast.main.temp);
                 const description = forecast.weather[0].description;
                 const iconPath = `img/weather/${forecast.weather[0].icon}.svg`;
+                const now = new Date();
+                const today = now.getDate();
 
-                /*if (hours === 12) {
+                /*if (index === 0 || hours === 12) {
                     console.log('日時：' + `${month}/${date} ${hours}:${min}`);
                     console.log('気温：' + temperature);
                     console.log('天気：' + description);
                     console.log('画像パス：' + iconPath);
                 }*/
-                //今日から5日分の天気を表示
-                if (index % 8 === 0) {
-                    console.log(index);
+
+                //現在の天気
+                if (index === 0) {
                     //現在の気温をプルダウンに
-                    if (index === 0){
+                    if (index === 0) {
                         const addCurrentTemp = `
-                        <option value="${ temperature }">現在位置の気温</option>
+                        <option value="${temperature}">現在位置の気温</option>
                     `;
                         $('#temp').after(addCurrentTemp);
                     }
+                    /*if (index === 0) {
+                        const currentWeather = `
+                        <div class="icon"><img src="${iconPath}"></div>
+                        <div class="info">
+                            <p>
+                                <span class="description">現在の天気：${description}</span>
+                                <span class="temp">${temperature}</span>°C
+                            </p>
+                        </div>`;
+                        // $('#weather').html(currentWeather);
+                    } */
+                }
+                //明日から5日分の天気を表示
+                if (hours === 12 && date !== today) {
+                    //週間の天気
                     const weekWeather = `
                     <a href="javascript:void(0);"><img src="${iconPath}"></a>
                     <div class="info">
@@ -235,19 +253,37 @@
                         </div>
                     </div>`;
                     $('.weather' + i).html(weekWeather);
+                    /** jQueryの処理 */
+                    $.ajaxSetup({
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                        },
+                    });
+                    $.ajax({
+                        //POST通信
+                        type: "post",
+                        //ここでデータの送信先URLを指定します。
+                        url: "/",
+                        dataType: "json",
+                        data: {
+                            id: i,
+                            month: month,
+                            date: date,
+                            desc: description,
+                            temp: temperature,
+                        },
+
+                    })
+                        //通信が成功したとき
+                        .then((res) => {
+                            console.log(res);
+                        })
+                        //通信が失敗したとき
+                        .fail((error) => {
+                            console.log(error.statusText);
+                        });
                     i += 1;
                 }
-                /*if (index === 0) {
-                    const currentWeather = `
-                    <div class="icon"><img src="${iconPath}"></div>
-                    <div class="info">
-                        <p>
-                            <span class="description">現在の天気：${description}</span>
-                            <span class="temp">${temperature}</span>°C
-                        </p>
-                    </div>`;
-                    // $('#weather').html(currentWeather);
-                } */
             });
         }).catch(error => {
             console.error(error);

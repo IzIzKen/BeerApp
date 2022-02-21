@@ -24,15 +24,21 @@ class beerFeeling extends Pivot
     {
         $query->join('beers', function (JoinClause $join) use ($queryParams) {
             $join->on('beers.id', '=', 'beer_feeling.beer_id');
-            if (array_key_exists('deepness', $queryParams) && !is_null($queryParams['deepness']) && array_key_exists('strength', $queryParams) && !is_null($queryParams['strength'])) {
-                $join->where('beers.deepness', '>=', $queryParams['deepness'])
-                    ->where('beers.strength', '>=', $queryParams['strength']);
+            //気分と温度の検索時
+            if (array_key_exists('feeling_id', $queryParams) && !is_null($queryParams['feeling_id']) && array_key_exists('deepness', $queryParams) && array_key_exists('strength', $queryParams)) {
+                $join->where('feeling_id', '=', $queryParams['feeling_id'])
+                    ->where('deepness', '>=', $queryParams['deepness'])
+                    ->where('strength', '>=', $queryParams['strength']);
             }
-
-            if (!is_null($queryParams['feeling_id'])){
-                $join->where('feeling_id', $queryParams['feeling_id']);
+            //気分のみの検索時
+            if (array_key_exists('feeling_id', $queryParams) && !is_null($queryParams['feeling_id'])) {
+                $join->where('feeling_id', '=', $queryParams['feeling_id']);
             }
-
+            //温度のみの検索時
+            if (array_key_exists('deepness', $queryParams) && array_key_exists('strength', $queryParams)) {
+                $join->where('deepness', '>=', $queryParams['deepness'])
+                    ->where('strength', '>=', $queryParams['strength']);
+            }
         });
 
         return $query;

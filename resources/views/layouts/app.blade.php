@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/remodal.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/remodal-default-theme.custom.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://classic.yarnpkg.com/en/package/destyle.css">
 
     <!-- Modernizr -->
     <script src="{{ asset('js/vendor/modernizr.js') }}"></script>
