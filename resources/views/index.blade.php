@@ -150,7 +150,6 @@
                 </div>
             </div>
         </section>
-        <button id="bt2">button</button>
     </main>
 
     <!-- Modal Content -->
@@ -213,13 +212,6 @@
                 const now = new Date();
                 const today = now.getDate();
 
-                /*if (index === 0 || hours === 12) {
-                    console.log('日時：' + `${month}/${date} ${hours}:${min}`);
-                    console.log('気温：' + temperature);
-                    console.log('天気：' + description);
-                    console.log('画像パス：' + iconPath);
-                }*/
-
                 //現在の天気
                 if (index === 0) {
                     //現在の気温をプルダウンに
@@ -244,7 +236,7 @@
                 //明日から5日分の天気を表示
                 if (hours === 12 && date !== today) {
                     //週間の天気
-                    const weekWeather = `
+                    /*const weekWeather = `
                     <a href="javascript:void(0);"><img src="${iconPath}"></a>
                     <div class="info">
                         <div style="text-align: center">
@@ -252,7 +244,7 @@
                             <span>${temperature}</span>°C
                         </div>
                     </div>`;
-                    $('.weather' + i).html(weekWeather);
+                    $('.weather' + i).html(weekWeather);*/
                     /** jQueryの処理 */
                     $.ajaxSetup({
                         headers: {
@@ -266,7 +258,6 @@
                         url: "/",
                         dataType: "json",
                         data: {
-                            id: i,
                             month: month,
                             date: date,
                             desc: description,
@@ -276,13 +267,29 @@
                     })
                         //通信が成功したとき
                         .then((res) => {
-                            console.log(res);
+                            //取得jsonデータ
+                            const data_stringify = JSON.stringify(res);
+                            const data_json = JSON.parse(data_stringify);
+                            //jsonデータから各データを取得
+                            const img = `img/beers/${data_json[0]["name"]}.jpg`;
+                            const name = data_json[0]["name"];
+                            console.log(i);
+                            const weekBeer = `
+                            <a href="javascript:void(0);"><img src="${img}"></a>
+                            <div class="info">
+                                <div style="text-align: center">
+                                    <span>${name}<br></span>
+                                    <span>${month}/${date}：${description}</span>
+                                    <span>${temperature}</span>°C
+                                </div>
+                            </div>`;
+                            $('.weather' + i).html(weekBeer);
+                            i += 1;
                         })
                         //通信が失敗したとき
                         .fail((error) => {
                             console.log(error.statusText);
                         });
-                    i += 1;
                 }
             });
         }).catch(error => {
