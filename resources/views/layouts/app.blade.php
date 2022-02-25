@@ -85,7 +85,7 @@
 <!-- Vendor -->
 <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/vendor/jquery.selectric.min.js') }}"></script>
-<script src="{{ asset('http://maps.google.com/maps/api/js?key=AIzaSyBwOM-0o426zcLxUoCtWo2MSzISsAn6S1M') }}"></script>
+{{--<script src="{{ asset('http://maps.google.com/maps/api/js?key=AIzaSyBwOM-0o426zcLxUoCtWo2MSzISsAn6S1M') }}"></script>--}}
 <script src="{{ asset('js/vendor/gmaps.min.js') }}"></script>
 <script src="{{ asset('js/vendor/jquery.waypoints.min.js') }}"></script>
 <script src="{{ asset('js/vendor/SmoothScroll.js') }}"></script>

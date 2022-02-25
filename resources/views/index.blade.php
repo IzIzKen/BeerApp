@@ -44,11 +44,9 @@
                                         <label for="temperature_id">
                                             <select name="temperature" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px; border-radius:30px;">
                                                 <option id="temp" class="dropdown-header" value="{{ null }}">気温を選ぶ</option>
-                                                <option value="-5">~ 0℃</option>
-                                                @for ($i = 1; $i < 30; $i+=10)
-                                                    <option value="{{$i + 4}}">{{$i}} ~ {{$i + 9}}℃</option>
+                                                @for ($i = -5; $i < 35; $i++)
+                                                    <option value="{{$i}}">{{$i}} ℃</option>
                                                 @endfor
-                                                <option value="35">31℃ ~</option>
                                                 {{--@foreach($temps as $temp)
                                                     <option value="{{$temp->id}}">{{$temp->temp}}</option>
                                                 @endforeach--}}
@@ -57,7 +55,7 @@
                                     </div>
                                     <div style="display: flex">
                                         <button class="btn-default btn-centered btn btn-hero animated flash infinite" style="margin-left: 0!important; border-radius:30px; animation-duration: 4s;" type="submit">ビールを探す</button>
-                                        <a class="btn-default btn-centered btn btn-hero" style="margin-left: 0!important;" href="{{ route('index') }}">ビール一覧を見る</a>
+{{--                                        <a class="btn-default btn-centered btn btn-hero" style="margin-left: 0!important;" href="{{ route('index') }}">ビール一覧を見る</a>--}}
                                     </div>
                                 </form>
                             </div>
