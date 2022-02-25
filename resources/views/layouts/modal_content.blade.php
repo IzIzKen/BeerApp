@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-5 col-sm-12 col-xs-12">
                     <div class="item-modal-image" style="background-size: contain">
-                        <a class="image-lightbox" href="{{$beerFeeling->img_url}}"><img alt="" src="{{ url($beerFeeling->img_url) }}"/></a>
+                        <a class="image-lightbox" href="{{$beerFeeling->img_url}}"><img alt="" src="img/beers/{{ $beerFeeling->name }}.jpg"/></a>
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12">

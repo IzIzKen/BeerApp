@@ -1,7 +1,7 @@
 <div class="row isotope-wrapper isotope-beers-wrapper">
     <div class="isotope isotope-beers gutter">
         @foreach($beerFeelings as $beerFeeling)
-            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6 col-xs-12">
+            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6">
                 <div class="grid-wrapper">
                     <a href="javascript:void(0);" data-remodal-target="bottle-{{$beerFeeling->beer_id}}">
                         {{--<figure style="background-image: url('{{$beerFeeling->img_url}}'); background-size: contain;">
