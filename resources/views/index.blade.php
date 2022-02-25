@@ -139,7 +139,7 @@
         <!-- Technologies / Clients -->
         <section class="page-section home-section">
             <div class="container" data-aos="fade-up" data-aos-offset="200">
-                <h3 class="section-heading"><span>今週のおすすめ</span></h3>
+                <h3 class="section-heading area"><span>今週のおすすめ</span></h3>
                 <div class="row">
                     <div id="forecast" class="clients-carousel">
                         @for ($i = 0; $i < 5; $i++)
@@ -155,6 +155,7 @@
     <!-- Modal Content -->
     @component('layouts.modal_content', ['beerFeelings'=>$beerFeelings])
     @endcomponent
+
 
     <!-- /.enry-content -->
 
@@ -188,17 +189,74 @@
     //天気の取得
     const weather_search = function () {
 
+        const urlCurrent = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&units=metric&lang=ja&appid=' + API_KEY;
         const url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric&lang=ja&appid=' + API_KEY;
 
+        //現在の天気
+        fetch(urlCurrent).then((data) => {
+            return data.json();
+        }).then((json) => {
+            console.log(json);
+            const dateTime = new Date(utcToJSTime(json.dt));
+            const month = dateTime.getMonth() + 1;
+            const date = dateTime.getDate();
+            const hours = dateTime.getHours();
+            const min = String(dateTime.getMinutes()).padStart(2, '0');
+            const temperature = Math.round(json.main.temp);
+            const description = json.weather[0].description;
+            const iconPath = `img/weather/${json.weather.icon}.svg`;
+
+            console.log('日時：' + `${month}/${date} ${hours}:${min}`);
+            console.log('気温：' + temperature);
+            console.log('天気：' + description);
+
+            const addCurrentTemp = `
+                        <option value="${temperature}">現在位置の気温</option>
+                    `;
+            $('#temp').after(addCurrentTemp);
+            /** jQueryの処理 */
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            });
+            $.ajax({
+                //POST通信
+                type: "post",
+                //ここでデータの送信先URLを指定します。
+                url: "/",
+                dataType: "json",
+                data: {
+                    month: month,
+                    date: date,
+                    desc: description,
+                    temp: temperature,
+                },
+            })
+                //通信が成功したとき
+                .then((res) => {
+                    //取得jsonデータ
+                    const data_stringify = JSON.stringify(res);
+                    const data_json = JSON.parse(data_stringify);
+                    console.log(data_json);
+                    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+                    //jsonデータから各データを取得
+                    const img = `img/beers/${data_json[0]["name"]}.jpg`;
+                    const name = data_json[0]["name"];
+                })
+                //通信が失敗したとき
+                .fail((error) => {
+                    console.log(error.statusText);
+                });
+        });
+
+        //明日からの天気
         fetch(url).then((data) => {
             return data.json();
         }).then((json) => {
             console.log(json);
-            // 都市名、国名
-            $('#place').text(json.city.name + ', ' + json.city.country);
+            const city = json.city.name;
             let i = 0;
-            /*console.log('都市名：' + json.city.name);
-            console.log('国名：' + json.city.country);*/
             // 天気予報データ
             json.list.forEach(function (forecast, index) {
                 const dateTime = new Date(utcToJSTime(forecast.dt));
@@ -209,42 +267,19 @@
                 const temperature = Math.round(forecast.main.temp);
                 const description = forecast.weather[0].description;
                 const iconPath = `img/weather/${forecast.weather[0].icon}.svg`;
+
                 const now = new Date();
                 const today = now.getDate();
+                /*console.log('日時：' + `${month}/${date} ${hours}:${min}`);
+                console.log('気温：' + temperature);
+                console.log('天気：' + description);*/
 
-                //現在の天気
-                if (index === 0) {
-                    //現在の気温をプルダウンに
-                    if (index === 0) {
-                        const addCurrentTemp = `
-                        <option value="${temperature}">現在位置の気温</option>
-                    `;
-                        $('#temp').after(addCurrentTemp);
-                    }
-                    /*if (index === 0) {
-                        const currentWeather = `
-                        <div class="icon"><img src="${iconPath}"></div>
-                        <div class="info">
-                            <p>
-                                <span class="description">現在の天気：${description}</span>
-                                <span class="temp">${temperature}</span>°C
-                            </p>
-                        </div>`;
-                        // $('#weather').html(currentWeather);
-                    } */
-                }
                 //明日から5日分の天気を表示
                 if (hours === 12 && date !== today) {
-                    //週間の天気
-                    /*const weekWeather = `
-                    <a href="javascript:void(0);"><img src="${iconPath}"></a>
-                    <div class="info">
-                        <div style="text-align: center">
-                            <span>${month}/${date}：${description}</span>
-                            <span>${temperature}</span>°C
-                        </div>
-                    </div>`;
-                    $('.weather' + i).html(weekWeather);*/
+                    const area = `
+                        <span>今週のおすすめ</span>
+                        <p></p><h3>${city}</h3>`;
+                    $('.area').html(area);
                     /** jQueryの処理 */
                     $.ajaxSetup({
                         headers: {
@@ -263,7 +298,6 @@
                             desc: description,
                             temp: temperature,
                         },
-
                     })
                         //通信が成功したとき
                         .then((res) => {
@@ -273,17 +307,19 @@
                             //jsonデータから各データを取得
                             const img = `img/beers/${data_json[0]["name"]}.jpg`;
                             const name = data_json[0]["name"];
-                            console.log(i);
                             const weekBeer = `
-                            <a href="javascript:void(0);"><img src="${img}"></a>
+                            <div style="text-align: center">
+                                <span>${month}/${date}:${description} ${temperature}°C</span>
+                                <img style="width: 25%; height: auto; margin: 0 auto; background-repeat: no-repeat" src="${iconPath}">
+                            </div>
+                            <a href="javascript:void(0);"><img style="width: auto; height: 150px" src="${img}"></a>
                             <div class="info">
                                 <div style="text-align: center">
-                                    <span>${name}<br></span>
-                                    <span>${month}/${date}：${description}</span>
-                                    <span>${temperature}</span>°C
+                                    <span>${name}<br></sp
                                 </div>
                             </div>`;
                             $('.weather' + i).html(weekBeer);
+                            console.log(res);
                             i += 1;
                         })
                         //通信が失敗したとき

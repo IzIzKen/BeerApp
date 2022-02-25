@@ -15,7 +15,6 @@ class WebController extends Controller
 {
     public function index()
     {
-//        dd($request);
         $feelings = Feeling::all();
         $temps = Temperature::all();
         $today = Carbon::today();
@@ -31,9 +30,16 @@ class WebController extends Controller
     public function forecast(Request $request)
     {
         $result = $request->all();
+
         $tempForecast = Arr::only($result, ['temp']);
+        $temp = (int)$tempForecast['temp'];
+
+        $day = Arr::only($result, ['date']);
+        $day_int = (int)$day['date'];
+
         $today = Carbon::today();
-        $temp = (int)$tempForecast;
+        $today_date = $today->day;
+
         switch ($temp) {
             case $temp <= 0:
                 $queryParams = [
@@ -75,8 +81,12 @@ class WebController extends Controller
                 ];
                 break;
         }
-        //$queryParamsを設定して$beerFeelingsをquery
-        $beerForecast = beerFeeling::query()->search($queryParams)->inRandomOrder(/*$today->getTimestamp()*/)->take(1)->get();
+        if ($today_date == $day_int){
+            $beerForecast = beerFeeling::query()->search($queryParams)->inRandomOrder($today->getTimestamp())->take(4)->get();
+        }
+        else{
+            $beerForecast = beerFeeling::query()->search($queryParams)->inRandomOrder(/*$today->getTimestamp()*/)->take(1)->get();
+        }
 
         return $beerForecast;
     }
