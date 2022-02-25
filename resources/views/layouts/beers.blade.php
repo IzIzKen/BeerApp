@@ -9,7 +9,8 @@
                                 <h5 class="grid-title"><span>{{$beerFeeling->name}}</span></h5>
                             </figcaption>
                         </figure>--}}
-                        <figure style="background-image: url('{{$beerFeeling->img_url}}'); background-size: contain;">
+                        <figure style="text-align: center; vertical-align: center"{{-- style="background-image: url('{{$beerFeeling->img_url}}'); background-size: contain;"--}}>
+                            <img style="background-size: contain" src="img/beers/{{ $beerFeeling->name }}.jpg">
                             <figcaption class="grid-content">
                                 <h5 class="grid-title"><span>{{$beerFeeling->name}}</span></h5>
                             </figcaption>
