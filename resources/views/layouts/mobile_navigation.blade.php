@@ -4,8 +4,8 @@
             <ul class="list-unstyled">
                 <li><a href="{{ route('home') }}">ホーム</a></li>
                 <li><a href="{{ route('index') }}">ビール一覧</a></li>
-                {{--<li><a href="about.html">About</a></li>
-                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="{{ route('brewery') }}">ブルワリー一覧</a></li>
+                {{--<li><a href="jobs.html">Jobs</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li class="has-child"><a href="javascript:void(0)">News</a>
                     <ul class="submenu submenu-default list-unstyled">

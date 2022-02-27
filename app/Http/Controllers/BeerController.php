@@ -6,6 +6,7 @@ use App\Models\beerFeeling;
 use App\Models\Beer;
 use App\Models\Feeling;
 use App\Models\Temperature;
+use App\Models\Brewery;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -40,13 +41,28 @@ class BeerController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function brewery(Request $request)
     {
-        //
+        $page = [
+            'page' => $request->page
+        ];
+        $options = array_merge([
+            'perPage' => 20,
+            'columns' => "*",
+            'pageName' => 'page',
+            'page' => 1,
+        ], $page);
+        $breweries = Brewery::query()->oldest('id')->paginate(
+            $options['perPage'],
+            $options['columns'],
+            $options['pageName'],
+            $options['page'],
+        );
+
+        return view('beer.brewery', compact('breweries'));
     }
 
     /**

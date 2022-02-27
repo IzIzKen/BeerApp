@@ -1,7 +1,7 @@
 <div class="row isotope-wrapper isotope-beers-wrapper">
     <div class="isotope isotope-beers gutter">
         @foreach($beerFeelings as $beerFeeling)
-            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6">
+            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6" style="width: 50%">
                 <div class="grid-wrapper">
                     <a href="javascript:void(0);" data-remodal-target="bottle-{{$beerFeeling->beer_id}}">
                         {{--<figure style="background-image: url('{{$beerFeeling->img_url}}'); background-size: contain;">
@@ -9,8 +9,8 @@
                                 <h5 class="grid-title"><span>{{$beerFeeling->name}}</span></h5>
                             </figcaption>
                         </figure>--}}
-                        <figure style="text-align: center; vertical-align: center"{{-- style="background-image: url('{{$beerFeeling->img_url}}'); background-size: contain;"--}}>
-                            <img style="background-size: contain;width: 45%;" src="img/beers/{{ $beerFeeling->name }}.jpg">
+                        <figure class="img-thumbnail image-centered" style="display: flex; align-items: center">
+                            <img style="margin: 0;" src="img/beers/{{ $beerFeeling->name }}.jpg">
                             <figcaption class="grid-content">
                                 <h5 class="grid-title"><span>{{$beerFeeling->name}}</span></h5>
                             </figcaption>

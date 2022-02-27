@@ -135,7 +135,7 @@
         </section>
 
         <!-- Technologies / Clients -->
-        <section class="page-section home-section">
+        <section class="page-section home-section" >
             <div class="container" data-aos="fade-up" data-aos-offset="200">
                 <h3 class="section-heading area"><span>今週のおすすめ</span></h3>
                 <div class="row">
@@ -273,7 +273,7 @@
                 console.log('天気：' + description);*/
 
                 //明日から5日分の天気を表示
-                if (hours === 12 && date !== today) {
+                if (hours === 12) {
                     const area = `
                         <span>今週のおすすめ</span>
                         <p></p><h3>${city}</h3>`;

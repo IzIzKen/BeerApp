@@ -30,11 +30,11 @@
                     <div class="col-md-12">
                         <ol class="list-inline list-unstyled" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                <a itemprop="item" href="{{ route('home') }}"><span itemprop="name">Home</span></a>
+                                <a itemprop="item" href="{{ route('home') }}"><span itemprop="name">ホーム</span></a>
                                 <meta itemprop="position" content="1">
                             </li>
                             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                <span itemprop="name">Beers</span>
+                                <span itemprop="name">ビール一覧</span>
                                 <meta itemprop="position" content="2">
                             </li>
                         </ol>
@@ -63,10 +63,11 @@
                 <div class="row isotope-wrapper isotope-beers-wrapper">
                     <div class="isotope isotope-beers gutter">
                         @foreach($beers as $beer)
-                            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6 col-xs-12" {{--ここにdata-filterに当てはまるclassを記述--}}>
+                            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6" style="width: 50%"{{--ここにdata-filterに当てはまるclassを記述--}}>
                                 <div class="grid-wrapper">
                                     <a href="javascript:void(0);" data-remodal-target="bottle-{{$beer->id}}">
-                                        <figure style="background-image: url('{{$beer->img_url}}'); background-size: contain">
+                                        <figure class="img-thumbnail image-centered" style="display: flex; align-items: center; justify-content: center">
+                                            <img style="margin: 0;" src="img/beers/{{ $beer->name }}.jpg">
                                             <figcaption class="grid-content">
                                                 <h5 class="grid-title"><span>{{$beer->name}}</span></h5>
                                             </figcaption>
