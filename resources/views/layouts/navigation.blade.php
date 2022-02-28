@@ -38,7 +38,7 @@
 
         <!-- Mobile Navigation Toggle -->
         <div class="mobile-toggle topbar-right col-sm-6 col-xs-6 hidden-md hidden-lg">
-            <a href="javascript:void(0);" class="toggle-panel"><i class="fa fa-bars"></i></a>
+            <a href="javascript:void(0);" class="toggle-panel" style="display: flex; align-items: center; justify-content: center"><i class="fa fa-bars"></i></a>
         </div>
     </div>
 </div>

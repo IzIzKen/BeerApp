@@ -44,18 +44,17 @@
                                         <label for="temperature_id">
                                             <select name="temperature" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px; border-radius:30px;">
                                                 <option id="temp" class="dropdown-header" value="{{ null }}">気温を選ぶ</option>
-                                                @for ($i = -5; $i < 35; $i++)
+                                                <option value="-10">~ -5 ℃</option>
+                                                @for ($i = -4; $i < 35; $i++)
                                                     <option value="{{$i}}">{{$i}} ℃</option>
                                                 @endfor
-                                                {{--@foreach($temps as $temp)
-                                                    <option value="{{$temp->id}}">{{$temp->temp}}</option>
-                                                @endforeach--}}
+                                                <option value="40">35 ℃ ~</option>
                                             </select>
                                         </label>
                                     </div>
                                     <div style="display: flex">
                                         <button class="btn-default btn-centered btn btn-hero animated flash infinite" style="margin-left: 0!important; border-radius:30px; animation-duration: 4s;" type="submit">ビールを探す</button>
-{{--                                        <a class="btn-default btn-centered btn btn-hero" style="margin-left: 0!important;" href="{{ route('index') }}">ビール一覧を見る</a>--}}
+{{--                                        <button class="btn-default btn-centered btn btn-hero btn-location" style="margin-left: 0!important;">位置情報を使用</button>--}}
                                     </div>
                                 </form>
                             </div>
@@ -141,7 +140,7 @@
                 <div class="row">
                     <div id="forecast" class="clients-carousel">
                         @for ($i = 0; $i < 5; $i++)
-                            <div class="client-item weather{{ $i }}">
+                            <div class="client-item weather{{ $i }}" style="padding-bottom: 50px">
                             </div>
                         @endfor
                     </div>
@@ -154,13 +153,11 @@
     @component('layouts.modal_content', ['beerFeelings'=>$beerFeelings])
     @endcomponent
 
-
-    <!-- /.enry-content -->
-
-
-
 @endsection
 <script>
+    /*$('.btn-location').click(function (){
+        console.log('/////////////////////////////////////////////');
+    });*/
     const API_KEY = "997b02747a4686d1fb4dc1e20487ff1c"
     const options = {
         enableHighAccuracy: true,

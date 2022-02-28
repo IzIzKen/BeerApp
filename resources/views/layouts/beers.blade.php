@@ -9,7 +9,7 @@
                                 <h5 class="grid-title"><span>{{$beerFeeling->name}}</span></h5>
                             </figcaption>
                         </figure>--}}
-                        <figure class="img-thumbnail image-centered" style="display: flex; align-items: center">
+                        <figure class="img-thumbnail image-centered" style="display: flex; align-items: center; justify-content: center">
                             <img style="margin: 0;" src="img/beers/{{ $beerFeeling->name }}.jpg">
                             <figcaption class="grid-content">
                                 <h5 class="grid-title"><span>{{$beerFeeling->name}}</span></h5>
