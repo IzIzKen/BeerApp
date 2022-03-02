@@ -37,7 +37,34 @@ class BeerController extends Controller
             $options['page'],
         );
 
-        return view('beer.index', compact('beers'));
+        //キーワード検索時
+        $keyword = $request->input('keyword');
+        $query = Beer::query();
+        if(!empty($keyword))
+        {
+            // 全角スペースを半角に変換
+            $spaceConversion = mb_convert_kana($keyword, 's');
+
+            // 単語を半角スペースで区切り、配列にする（例："山田 翔" → ["山田", "翔"]）
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+
+
+            // 単語をループで回し、ユーザーネームと部分一致するものがあれば、$queryとして保持される
+            foreach($wordArraySearched as $value) {
+                $query->where('name','like','%'.$value.'%');
+                $query->orWhere('name_en','like','%'.$value.'%');
+                $query->orWhere('description','like','%'.$value.'%');
+            }
+
+            $beers = $query->orderBy('id','asc')->paginate(
+                $options['perPage'],
+                $options['columns'],
+                $options['pageName'],
+                $options['page'],
+            );
+        }
+
+        return view('beer.index', compact('beers', 'keyword'));
     }
 
     /**
@@ -62,7 +89,34 @@ class BeerController extends Controller
             $options['page'],
         );
 
-        return view('beer.brewery', compact('breweries'));
+        //キーワード検索時
+        $keyword = $request->input('keyword');
+        $query = Brewery::query();
+        if(!empty($keyword))
+        {
+            // 全角スペースを半角に変換
+            $spaceConversion = mb_convert_kana($keyword, 's');
+
+            // 単語を半角スペースで区切り、配列にする（例："山田 翔" → ["山田", "翔"]）
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+
+
+            // 単語をループで回し、ユーザーネームと部分一致するものがあれば、$queryとして保持される
+            foreach($wordArraySearched as $value) {
+                $query->where('name','like','%'.$value.'%');
+                $query->orWhere('address','like','%'.$value.'%');
+                $query->orWhere('description','like','%'.$value.'%');
+            }
+
+            $breweries = $query->orderBy('id','asc')->paginate(
+                $options['perPage'],
+                $options['columns'],
+                $options['pageName'],
+                $options['page'],
+            );
+        }
+
+        return view('beer.brewery', compact('breweries', 'keyword'));
     }
 
     /**

@@ -54,9 +54,9 @@
                                     </div>
                                     <div style="display: flex">
                                         <button class="btn-default btn-centered btn btn-hero animated flash infinite" style="margin-left: 0!important; border-radius:30px; animation-duration: 4s;" type="submit">ビールを探す</button>
-{{--                                        <button class="btn-default btn-centered btn btn-hero btn-location" style="margin-left: 0!important;">位置情報を使用</button>--}}
                                     </div>
                                 </form>
+{{--                                <button id="btn-location" class="btn-default btn-centered btn btn-hero" style="margin-left: 0!important;">位置情報を使用</button>--}}
                             </div>
                         </div>
                     </div>
@@ -70,18 +70,47 @@
 
     <!-- Page Content -->
     <main class="entry-content">
+        <!-- Our Beers -->
+        <section class="page-section home-section">
+            <div class="container" data-aos="fade-up" data-aos-offset="200">
+                <h3 class="section-heading"><span>本日のおすすめ</span></h3>
+                @component('layouts.beers', ['beerFeelings'=>$beerFeelings])
+                @endcomponent
+
+
+                <div class="btn-centered">
+                    <a href="{{route('index')}}" class="btn btn-default">View More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies / Clients -->
+        <section class="page-section home-section">
+            <div class="container" data-aos="fade-up" data-aos-offset="200">
+                <h3 class="section-heading area"><span>今週のおすすめ</span></h3>
+                <div class="row">
+                    <div id="forecast" class="clients-carousel">
+                        @for ($i = 0; $i < 5; $i++)
+                            <div class="client-item weather{{ $i }}" style="padding-bottom: 50px">
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="page-section home-section no-padding no-margin">
             <div class="feature-wrapper">
                 <div class="container-fluid">
                     <div class="row no-gutter">
-                        {{--<div class="col-md-4">
+                        <div class="col-md-4">
                             <div class="features-grid">
-                                <a href="jobs.html">
+                                <a href="{{ route('index') }}">
                                     <figure>
-                                        <img alt="" src="http://placehold.it/1400x933/444"/>
+                                        <img alt="" src="img/manybeers2_3×2.png"/>
                                         <figcaption>
-                                            <h2>We're Hiring</h2>
-                                            <p>View our latest job positions</p>
+                                            <h2>ビール一覧</h2>
+                                            <p>400種類以上のビールをご紹介</p>
                                         </figcaption>
                                     </figure>
                                 </a>
@@ -89,12 +118,12 @@
                         </div>
                         <div class="col-md-4">
                             <div class="features-grid">
-                                <a href="events.html">
+                                <a href="{{ route('brewery') }}">
                                     <figure>
-                                        <img alt="" src="http://placehold.it/1400x933/555"/>
+                                        <img alt="" src="img/brewery2.jpg"/>
                                         <figcaption>
-                                            <h2>Upcoming Events</h2>
-                                            <p>See our latest events schedule</p>
+                                            <h2>ブルワリー一覧</h2>
+                                            <p>ブルワリーとはビールの醸造所です<br>世界中のブルワリーをご紹介</p>
                                         </figcaption>
                                     </figure>
                                 </a>
@@ -112,37 +141,7 @@
                                     </figure>
                                 </a>
                             </div>
-                        </div>--}}
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Our Beers -->
-        <section class="page-section home-section">
-            <div class="container" data-aos="fade-up" data-aos-offset="200">
-                <h3 class="section-heading"><span>本日のおすすめ</span></h3>
-                @component('layouts.beers', ['beerFeelings'=>$beerFeelings])
-                @endcomponent
-
-
-                <div class="btn-centered">
-                    <a href="{{route('index')}}" class="btn btn-default">View More</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technologies / Clients -->
-        <section class="page-section home-section" >
-            <div class="container" data-aos="fade-up" data-aos-offset="200">
-                <h3 class="section-heading area"><span>今週のおすすめ</span></h3>
-                <div class="row">
-                    <div id="forecast" class="clients-carousel">
-                        @for ($i = 0; $i < 5; $i++)
-                            <div class="client-item weather{{ $i }}" style="padding-bottom: 50px">
-                            </div>
-                        @endfor
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,9 +154,6 @@
 
 @endsection
 <script>
-    /*$('.btn-location').click(function (){
-        console.log('/////////////////////////////////////////////');
-    });*/
     const API_KEY = "997b02747a4686d1fb4dc1e20487ff1c"
     const options = {
         enableHighAccuracy: true,
@@ -180,6 +176,13 @@
 
     //現在地の取得：成功→success or 失敗→error
     navigator.geolocation.getCurrentPosition(success, error, options);
+
+    window.addEventListener('DOMContentLoaded', function(){
+        /** jQueryの処理 */
+        $('#btn-location').on('click', function () {
+            console.log('/////////////////////////////////////////////');
+        });
+    });
 
     //天気の取得
     const weather_search = function () {

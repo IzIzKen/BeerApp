@@ -43,8 +43,18 @@
             </div>
         </div>
 
-        <section class="page-section">
+        <section class="page-section no-padding">
             <div class="container">
+                <form method="get" action="" class="form-inline" style="margin-bottom: 20px">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" name="keyword" class="form-control" value="{{$keyword}}" placeholder="キーワードを入力" style="margin-top: 5px; display: inline-block;">
+                        <a href="{{ route('index') }}" class="fa fa-remove tooltipster" style="display: inline-block; color: #cccccc; background-color:transparent; border: 1px solid #cccccc; border-radius:50%; width: 25px; height: 25px; line-height: 25px; text-align: center"></a>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="検索" class="btn" style="display: inline-block; color:white; background-color:#ffc930; border: 1px solid #ffc930; border-radius:30px; width: 100px">
+                    </div>
+                </form>
                 {{--@component('layouts.beers', ['beerFeelings'=>$beerFeelings])
                 @endcomponent--}}
                 {{--<div class="row">
