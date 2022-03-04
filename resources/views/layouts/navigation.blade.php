@@ -8,8 +8,8 @@
                     <li><a href="{{ route('home') }}">ホーム</a></li>
                     <li><a href="{{ route('index') }}">ビール一覧</a></li>
                     <li><a href="{{ route('brewery') }}">ブルワリー一覧</a></li>
-                    {{--<li><a href="{{route('home')}}">About</a></li>
-                    <li><a href="{{route('home')}}">Jobs</a></li>--}}
+                    <li><a href="{{ route('style') }}">スタイル一覧</a></li>
+{{--                    <li><a href="{{route('home')}}">Jobs</a></li>--}}
                 </ul>
 
                 <!-- Right Menu -->

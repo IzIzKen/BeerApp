@@ -7,6 +7,7 @@ use App\Models\Beer;
 use App\Models\Feeling;
 use App\Models\Temperature;
 use App\Models\Brewery;
+use App\Models\Style;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -125,9 +126,15 @@ class BeerController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function style()
     {
-        //
+//        $query = Style::query();
+
+        $ales = Style::query()->where('name','like','%(エール)%')->get();
+        $lagers = Style::query()->where('name','like','%(ラガー)%')->get();
+        $others = Style::query()->where('name','like','%(ハイブリッド)%')->get();
+
+        return view('beer.style', compact('ales', 'lagers', 'others'));
     }
 
     /**

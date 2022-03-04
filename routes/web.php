@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'WebController@index')->name('home');
 Route::get('beer', 'BeerController@index')->name('index');
 Route::get('brewery', 'BeerController@brewery')->name('brewery');
+Route::get('style', 'BeerController@style')->name('style');
 Route::get('beer/{id}', 'Beercontroller@show')->name('show');
 Route::post('search', 'BeerController@search')->name('search');
 

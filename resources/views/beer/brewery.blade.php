@@ -1,4 +1,4 @@
-{{-- ビール一覧ページ --}}
+{{-- ブルワリー一覧ページ --}}
 @extends('layouts.app')
 
 @section('content')
@@ -49,7 +49,7 @@
                     @csrf
                     <div class="form-group">
                         <input type="text" name="keyword" class="form-control" value="{{$keyword}}" placeholder="キーワードを入力" style="margin-top: 5px; display: inline-block;">
-                        <a href="{{ route('brewery') }}" class="fa fa-remove tooltipster" style="display: inline-block; color: #cccccc; background-color:transparent; border: 1px solid #cccccc; border-radius:50%; width: 25px; height: 25px; line-height: 25px; text-align: center"></a>
+                        <a href="{{ route('brewery') }}" class="fa fa-remove tooltipster" style="display: inline-block; color: #cccccc; background-color:transparent; border: 1px solid #cccccc; border-radius:50%; width: 25px; height: 25px; line-height: 25px; text-align: center;"></a>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="検索" class="btn" style="display: inline-block; color:white; background-color:#ffc930; border: 1px solid #ffc930; border-radius:30px; width: 100px">
@@ -76,7 +76,7 @@
                             <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6" style="width: 50%; height: auto"{{--ここにdata-filterに当てはまるclassを記述--}}>
                                 <div class="grid-wrapper">
                                     <a href="javascript:void(0);" data-remodal-target="bottle-{{$brewery->id}}">
-                                        <figure class="img-thumbnail image-centered" style="display: flex; align-items: center; justify-content: center">
+                                        <figure class="img-thumbnail" style="display: flex; align-items: center; justify-content: center">
                                             <img style="margin: 0;" src="img/breweries/{{ $brewery->name }}.png">
                                             <figcaption class="grid-content">
                                                 <h5 class="grid-title"><span>{{$brewery->name}}</span></h5>
