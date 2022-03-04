@@ -131,12 +131,12 @@
                         </div>
                         <div class="col-md-4">
                             <div class="features-grid">
-                                <a href="contact.html">
+                                <a href="{{ route('style') }}">
                                     <figure>
-                                        <img alt="" src="http://placehold.it/1400x933/666"/>
+                                        <img alt="" src="img/worldmap2.jpg"/>
                                         <figcaption>
-                                            <h2>Get in Touch</h2>
-                                            <p>Let us know your opinion</p>
+                                            <h2>スタイル一覧</h2>
+                                            <p>ビールの種類は「スタイル」呼ばれ、<br>世界には各地域に根ざしたビールがあります</p>
                                         </figcaption>
                                     </figure>
                                 </a>

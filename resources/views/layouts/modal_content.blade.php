@@ -15,7 +15,7 @@
                         <h3 class="event-title">{{ $beerFeeling->name_en }}</h3>
                         <ul class="event-meta list-inline">
                             <li class="fa fa-tint tooltipster">{{ $beerFeeling->alcohol }}</li>
-                            <li class="fa fa-beer tooltipster">{{ $beerFeeling->beer->style->name }}</li>
+                            <li class="fa fa-beer tooltipster"><a href="{{ route('style') }}">{{ $beerFeeling->beer->style->name }}</a></li>
                             <li class="fa fa-industry tooltipster"><a href="{{ $beerFeeling->beer->brewery->web }}">{{ $beerFeeling->beer->brewery->name }}</a></li>
                         </ul>
                         <table class="table">
