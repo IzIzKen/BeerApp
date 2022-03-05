@@ -6,12 +6,12 @@
             <div class="row">
                 <div class="col-md-5 col-sm-12 col-xs-12">
                     <div class="item-modal-image" style="background-size: contain">
-                        <a class="image-lightbox" href="{{$beerFeeling->img_url}}"><img alt="" src="img/beers/{{ $beerFeeling->name }}.jpg"/></a>
+                        <a class="image-lightbox" href="img/beers/{{ $beerFeeling->beer_name }}.jpg"><img alt="" src="img/beers/{{ $beerFeeling->beer_name }}.jpg"/></a>
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <div class="events-wrapper">
-                        <h3 class="event-title">{{ $beerFeeling->name }}</h3>
+                        <h3 class="event-title">{{ $beerFeeling->beer_name }}</h3>
                         <h3 class="event-title">{{ $beerFeeling->name_en }}</h3>
                         <ul class="event-meta list-inline">
                             <li class="fa fa-tint tooltipster">{{ $beerFeeling->alcohol }}</li>

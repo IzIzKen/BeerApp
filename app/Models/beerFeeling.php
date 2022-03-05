@@ -22,6 +22,12 @@ class beerFeeling extends Pivot
 
     public function scopeSearch($query, $queryParams)
     {
+        $query->select('*', 'feelings.name as feeling_name', 'beers.name as beer_name', 'styles.name as style_name', 'breweries.name as brewery_name');
+
+        $query->join('feelings', function (JoinClause $join) {
+            $join->on('feelings.id', '=', 'beer_feeling.feeling_id');
+        });
+
         $query->join('beers', function (JoinClause $join) use ($queryParams) {
             $join->on('beers.id', '=', 'beer_feeling.beer_id');
             //気分と温度の検索時
@@ -40,6 +46,16 @@ class beerFeeling extends Pivot
                     ->where('strength', '>=', $queryParams['strength']);
             }
         });
+
+        $query->join('styles', function (JoinClause $join) {
+            $join->on('styles.id', '=', 'beers.style_id');
+        });
+
+        $query->join('breweries', function (JoinClause $join) {
+            $join->on('breweries.id', '=', 'beers.brewery_id');
+        });
+
+
 
         return $query;
     }

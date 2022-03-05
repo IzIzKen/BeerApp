@@ -90,4 +90,22 @@ class WebController extends Controller
 
         return $beerForecast;
     }
+
+    public function test(Request $request)
+    {
+        $queryParams = [
+            'feeling_id' => null,
+            'deepness' => 1,
+            'strength' => 5,
+        ];
+        if (false){
+            $beerForecast = beerFeeling::query()->search($queryParams)->inRandomOrder($today->getTimestamp())->take(4)->get();
+        }
+        else{
+            $beerForecast = beerFeeling::query()->search($queryParams)->inRandomOrder(/*$today->getTimestamp()*/)->take(1)->get();
+            dd($beerForecast);
+        }
+
+        return $beerForecast;
+    }
 }

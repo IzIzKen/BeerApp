@@ -10,13 +10,13 @@
                             </figcaption>
                         </figure>--}}
                         <figure class="img-thumbnail image-centered" style="display: flex; align-items: center; justify-content: center">
-                            <img style="margin: 0;" src="img/beers/{{ $beerFeeling->name }}.jpg">
+                            <img style="margin: 0;" src="img/beers/{{ $beerFeeling->beer_name }}.jpg">
                             <figcaption class="grid-content">
-                                <h5 class="grid-title"><span>{{$beerFeeling->name}}</span></h5>
+                                <h5 class="grid-title"><span>{{$beerFeeling->beer_name}}</span></h5>
                             </figcaption>
                         </figure>
                     </a>
-                    <h5>{{$beerFeeling->name}}</h5>
+                    <h5>{{$beerFeeling->beer_name}}</h5>
                 </div>
             </div>
         @endforeach
