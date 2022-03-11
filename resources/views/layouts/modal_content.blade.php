@@ -1,5 +1,4 @@
 <div class="remodal-bg">
-
     @foreach($beerFeelings as $beerFeeling)
         <div class="remodal modal-beers" data-remodal-id="bottle-{{$beerFeeling->beer_id}}">
             <button data-remodal-action="close" class="remodal-close"></button>

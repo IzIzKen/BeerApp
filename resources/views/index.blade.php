@@ -76,7 +76,11 @@
                 <h3 class="section-heading"><span>本日のおすすめ</span></h3>
                 @component('layouts.beers', ['beerFeelings'=>$beerFeelings])
                 @endcomponent
-
+                <h3 class="section-heading"><span>今週のおすすめ</span></h3>
+                <div class="row isotope-wrapper isotope-beers-wrapper">
+                    <div class="isotope isotope-beers gutter weather">
+                    </div>
+                </div>
 
                 <div class="btn-centered">
                     <a href="{{route('index')}}" class="btn btn-default">View More</a>
@@ -85,7 +89,7 @@
         </section>
 
         <!-- Technologies / Clients -->
-        <section class="page-section home-section">
+        {{--<section class="page-section home-section">
             <div class="container" data-aos="fade-up" data-aos-offset="200">
                 <h3 class="section-heading area"><span>今週のおすすめ</span></h3>
                 <div class="row">
@@ -97,7 +101,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>--}}
 
         <section class="page-section home-section no-padding no-margin">
             <div class="feature-wrapper">
@@ -151,18 +155,9 @@
     <!-- Modal Content -->
     @component('layouts.modal_content', ['beerFeelings'=>$beerFeelings])
     @endcomponent
-    {{--ここにモーダルをそのままの構造で--}}
-    {{--<div id="weekBeerModal" class="remodal-bg">
-    </div>--}}
-    <div id="weekBeerModal" class="remodal-bg">
-        {{--@for ($j = 0; $j < 5; $j++)
-            <div class="weekBeerModal-{{ $j }}">
-            </div>
-        @endfor--}}
-    </div>
-
 
 @endsection
+
 <script>
     const API_KEY = "997b02747a4686d1fb4dc1e20487ff1c"
     const options = {
@@ -313,96 +308,111 @@
                             desc: description,
                             temp: temperature,
                         },
-                    })
+                    }).then((res) => {
                         //通信が成功したとき
-                        .then((res) => {
-                            //取得jsonデータ
-                            const data_stringify = JSON.stringify(res);
-                            const data_json = JSON.parse(data_stringify);
 
-                            /*console.log('+++++++++');
-                            console.log(data_json);
-                            console.log('+++++++++');
-                            console.log('+++++++++');*/
+                        //取得jsonデータ
+                        const data_stringify = JSON.stringify(res);
+                        const data_json = JSON.parse(data_stringify);
 
-                            //jsonデータから各データを取得
-                            const img = `img/beers/${data_json[0]["beer_name"]}.jpg`;
-                            const name = data_json[0]["beer_name"];
-                            //今週のおすすめに挿入
-                            const weekBeer = `
+                        /*console.log('+++++++++');
+                        console.log(data_json);
+                        console.log('+++++++++');
+                        console.log('+++++++++');*/
+
+                        //jsonデータから各データを取得
+                        const img = `img/beers/${data_json[0]["beer_name"]}.jpg`;
+                        const name = data_json[0]["beer_name"];
+                        //今週のおすすめに挿入
+                        /*const weekBeer = `
+                        <div style="text-align: center">
+                            <span>${month}/${date}:${description} ${temperature}°C</span>
+                            <img style="width: 25%; height: auto; margin: 0 auto; background-repeat: no-repeat" src="${iconPath}">
+                        </div>
+                        <a href="javascript:void(0);" data-remodal-target="bottle-${data_json[0]['beer_id']}"><img style="width: auto; height: 150px" src="${img}"></a>
+                        <div class="info">
                             <div style="text-align: center">
-                                <span>${month}/${date}:${description} ${temperature}°C</span>
-                                <img style="width: 25%; height: auto; margin: 0 auto; background-repeat: no-repeat" src="${iconPath}">
+                                <span>${name}<br></span>
                             </div>
-                            <a href="javascript:void(0);" data-remodal-target="bottle-${data_json[0]['beer_id']}"><img style="width: auto; height: 150px" src="${img}"></a>
-                            <div class="info">
-                                <div style="text-align: center">
-                                    <span>${name}<br></span>
+                        </div>`;*/
+                        const weekBeer = `
+                            <div class="grid-item col-lg-3 col-md-3 col-sm-6 col-ms-6" style="width: 50%">
+                                <div class="grid-wrapper">
+                                    <a href="javascript:void(0);" data-remodal-target="bottle-${data_json[0]['beer_id']}">
+                                    <figure class="img-thumbnail image-centered" style="display: flex; align-items: center; justify-content: center">
+                                        <img style="margin: 0;" src="img/beers/${data_json[0]['beer_name']}.jpg">
+                                            <figcaption class="grid-content">
+                                                <h5 class="grid-title"><span>${data_json[0]['beer_name']}</span></h5>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+                                    <h5>${data_json[0]['beer_name']}</h5>
                                 </div>
                             </div>`;
-                            $('.weather' + i).html(weekBeer);
-                            // console.log(res);
-                            i += 1;
+                        // $('.weather' + i).html(weekBeer);
+                        $('.weather').append(weekBeer);
+                        i += 1;
 
-                            const weekBeerModal_element = document.getElementById('weekBeerModal');
-                            //本日のおすすめのモーダル
-                            const weekBeerModal = `
-                                <div class="remodal modal-beers" data-remodal-id="bottle-${data_json[0]['beer_id']}">
-                                    <button data-remodal-action="close" class="remodal-close"></button>
-                                    <div class="row">
-                                        <div class="col-md-5 col-sm-12 col-xs-12">
-                                            <div class="item-modal-image" style="background-size: contain">
-                                                <a class="image-lightbox" href="img/beers/${data_json[0]['beer_name']}.jpg"><img alt="" src="img/beers/${data_json[0]['beer_name']}.jpg"/></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7 col-sm-12 col-xs-12">
-                                            <div class="events-wrapper">
-                                                <h3 class="event-title">${data_json[0]['name']}</h3>
-                                                <h3 class="event-title">${data_json[0]['name_en']}</h3>
-                                                <ul class="event-meta list-inline">
-                                                    <li class="fa fa-tint tooltipster">${data_json[0]['alcohol']}</li>
-                                                    <li class="fa fa-beer tooltipster"><a href="">${data_json[0]['style_name']}</a></li>
-                                                    <li class="fa fa-industry tooltipster"><a href="${data_json[0]['web']}">${data_json[0]['brewery_name']}</a></li>
-                                                </ul>
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>■ 苦さ</td>
-                                                        <td>${'🍺'.repeat(data_json[0]['bitterness'])}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>■ 甘さ</td>
-                                                        <td>${'🍺'.repeat(data_json[0]['sweetness'])}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>■ 酸味</td>
-                                                        <td>${'🍺'.repeat(data_json[0]['acidity'])}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>■ コク</td>
-                                                        <td>${'🍺'.repeat(data_json[0]['deepness'])}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>■ キレ</td>
-                                                        <td>${'🍺'.repeat(data_json[0]['strength'])}</td>
-                                                    </tr>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                                <p>${data_json[0]['description']}</p>
-                                            </div>
+                        //本日のおすすめのモーダル
+                        const weekBeerModal = `
+                        <div class="remodal-wrapper remodal-is-closed" style="display: none;">
+                            <div class="remodal modal-beers remodal-is-initialized remodal-is-closed" data-remodal-id="bottle-${data_json[0]['beer_id']}" tabindex="-1">
+                                <button data-remodal-action="close" class="remodal-close"></button>
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-12 col-xs-12">
+                                        <div class="item-modal-image" style="background-size: contain">
+                                            <a class="image-lightbox" href="img/beers/${data_json[0]['beer_name']}.jpg"><img alt="" src="img/beers/${data_json[0]['beer_name']}.jpg"/></a>
                                         </div>
                                     </div>
-                                </div>`;
-                            // $('.weekBeerModal-' + i).html(weekBeerModal);
-                            $('#weekBeerModal').append(weekBeerModal);
-                        })
+                                    <div class="col-md-7 col-sm-12 col-xs-12">
+                                        <div class="events-wrapper">
+                                            <h3 class="event-title">${data_json[0]['beer_name']}</h3>
+                                            <h3 class="event-title">${data_json[0]['name_en']}</h3>
+                                            <ul class="event-meta list-inline">
+                                                <li class="fa fa-tint tooltipster">${data_json[0]['alcohol']}</li>
+                                                <li class="fa fa-beer tooltipster"><a href="">${data_json[0]['style_name']}</a></li>
+                                                <li class="fa fa-industry tooltipster"><a href="${data_json[0]['web']}">${data_json[0]['brewery_name']}</a></li>
+                                            </ul>
+                                            <table class="table">
+                                                <tbody>
+                                                <tr>
+                                                    <td>■ 苦さ</td>
+                                                    <td>${'🍺'.repeat(data_json[0]['bitterness'])}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>■ 甘さ</td>
+                                                    <td>${'🍺'.repeat(data_json[0]['sweetness'])}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>■ 酸味</td>
+                                                    <td>${'🍺'.repeat(data_json[0]['acidity'])}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>■ コク</td>
+                                                    <td>${'🍺'.repeat(data_json[0]['deepness'])}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>■ キレ</td>
+                                                    <td>${'🍺'.repeat(data_json[0]['strength'])}</td>
+                                                </tr>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <p>${data_json[0]['description']}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
+                        $('.remodal-wrapper').parent().append(weekBeerModal);
+                    }).fail((error) => {
                         //通信が失敗したとき
-                        .fail((error) => {
-                            console.log(error.statusText);
-                        });
+                        console.log(error.statusText);
+                    });
                 }
             });
+
         }).catch(error => {
             console.error(error);
         });

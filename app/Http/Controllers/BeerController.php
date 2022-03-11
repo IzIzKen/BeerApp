@@ -128,24 +128,10 @@ class BeerController extends Controller
      */
     public function style()
     {
-//        $query = Style::query();
-
         $ales = Style::query()->where('name','like','%(エール)%')->get();
         $lagers = Style::query()->where('name','like','%(ラガー)%')->get();
         $others = Style::query()->where('name','like','%(ハイブリッド)%')->get();
 
-        /*$ales = Style::with('beers')->where('name', 'like', '%(エール)%')->get();
-        $ale_beers = [];
-        $index = 0;
-        foreach ($ales as $ale){
-            if (!$ale_beers[$index]->isNull()) {
-                $ale_beers[$index] = $ale->beers->random();
-            } else {
-                $ale_beers[$index] = null;
-            }
-//            dd($ale_beers[$index]);
-            $index += 1;
-        }*/
         return view('beer.style', compact('ales', 'lagers', 'others'));
     }
 
