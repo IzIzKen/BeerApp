@@ -76,14 +76,13 @@
                 <h3 class="section-heading"><span>本日のおすすめ</span></h3>
                 @component('layouts.beers', ['beerFeelings'=>$beerFeelings])
                 @endcomponent
+                <div class="btn-centered" style="margin-bottom: 100px">
+                    <a href="{{ route('index') }}" class="btn btn-default">View More</a>
+                </div>
                 <h3 class="section-heading area"><span>今週のおすすめ</span></h3>
                 <div class="row isotope-wrapper isotope-beers-wrapper">
                     <div class="isotope isotope-beers gutter weather">
                     </div>
-                </div>
-
-                <div class="btn-centered">
-                    <a href="{{ route('index') }}" class="btn btn-default">View More</a>
                 </div>
             </div>
         </section>
