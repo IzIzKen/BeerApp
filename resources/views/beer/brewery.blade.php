@@ -121,10 +121,15 @@
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="events-wrapper">
                             <h3 class="event-title">{{ $brewery->name }}</h3>
+                            <form action="{{ route('show', $brewery->id) }}" method="get">
+                                @csrf
+                                <input type="submit" class="btn-default" value="このブルワリーのビールを見る">
+                            </form>
                             <ul class="event-meta list-inline">
                                 <li class="fa fa-location-arrow tooltipster">{{ $brewery->address }}</li>
                                 <li class="fa fa-phone tooltipster">{{ $brewery->tel }}</li>
                                 <li class="fa fa-desktop tooltipster"><a href="{{ $brewery->web }}">webサイトはこちら</a></li>
+                                <li></li>
                             </ul>
                             <p>{{ $brewery->description }}</p>
                         </div>

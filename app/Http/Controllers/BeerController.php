@@ -156,11 +156,13 @@ class BeerController extends Controller
      * @param int $
      * @return \Illuminate\Http\Response
      */
-    public function show(Beer $beers, int $id)
+    public function show(int $id)
     {
-        $beer = Beer::with('brewery')->find($id);
+//        $beer = Beer::with('brewery')->find($id);
+        $beers = Beer::query()->where('brewery_id', $id)->get();
+        $brewery = Brewery::all()->find($id);
 
-        return view('beer.show', compact('beer'));
+        return view('beer.show', compact('beers', 'brewery'));
     }
 
     /**

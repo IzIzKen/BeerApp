@@ -19,6 +19,9 @@
                             <div class="header-content">
                                 <h1 class="title">今の自分、<br>が飲みたいビールを</h1>
                                 <p class="subtitle">今はどんな気分ですか？<br><br>「 気分 」と「 気温 」から<br>今のあなたにぴったりのビールを<br>ご紹介いたします</p>
+                                {{--<div class="btn-group">
+                                    <button id="btn-location" name="btn_location" type="button" class="btn btn-warning dropdown-toggle btn-hero" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px; border-radius:30px;">現在位置を使用する</button>
+                                </div>--}}
                                 <form action="{{ route('search')}}" method="post">
                                     @csrf
                                     @if ($errors->any())
