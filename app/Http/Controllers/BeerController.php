@@ -161,7 +161,6 @@ class BeerController extends Controller
 //        $beer = Beer::with('brewery')->find($id);
         $brewery = Brewery::all()->find($id);
         $beers = Beer::query()->where('brewery_id', $id)->get();
-        dd($brewery);
 
         return view('beer.show', compact('beers', 'brewery'));
     }
